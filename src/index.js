@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import './connect-fonts.css';
 import './index.css';
 import CatalogLayout from './Layouts/CatalogLayout';
 
@@ -10,9 +9,9 @@ root.render(
 	<BrowserRouter>
 		<Routes>
 			<Route path='/' element={<Navigate to={'/cats'} />}/>
-			<Route path='/cats' element={<CatalogLayout headerTitle={'Categories'}/>}/>
-			<Route path='/sub_cats' element={<CatalogLayout headerTitle={'Sub-categories'}/>}/>
-			<Route path='/item' element={<CatalogLayout headerTitle={'Product'}/>}/>
+			<Route path='/cats' element={<CatalogLayout type={'test_categories'} headerTitle={'Categories'}/>}/>
+			<Route path='/sub_cats' element={<CatalogLayout type={'test_categories'} headerTitle={'Sub-categories'}/>}/>
+			<Route path='/item' element={<CatalogLayout type={'test_product'} headerTitle={'Product'}/>}/>
 		</Routes>
 	</BrowserRouter>
 );
