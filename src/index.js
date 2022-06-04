@@ -8,7 +8,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 	<BrowserRouter>
 		<Routes>
-			<Route path='/proseller/' element={<Navigate to={'/proseller/cats/0'} />}/>
+			<Route path='/proseller/' element={<Navigate to={'/cats/0'} />}/>
 			<Route path='/proseller/cats/:id' element={<CatalogLayout type={'test_categories'} headerTitle={'Categories'}/>}/>
 			<Route path='/proseller/item/:id' element={<>Zdes' budet otdel'naya stranitsa tovara!</>}/>
 		</Routes>
