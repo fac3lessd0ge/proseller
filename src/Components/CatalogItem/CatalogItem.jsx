@@ -26,7 +26,7 @@ const CatalogItem = ({ id, product, name, imgUrl, description, price = undefined
                 </div>
             </div>
             {product && fastbuy && <BuyButton />}
-            {product && !fastbuy && <Link to = {`/item/${id}`}><BuyButton /></Link>}
+            {product && !fastbuy && <Link to = {`proseller/item/${id}`}><BuyButton /></Link>}
         </div>
     );
 }
