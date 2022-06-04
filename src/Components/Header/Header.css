@@ -9,6 +9,7 @@ header {
     justify-content: left;
     gap: 15px;
     align-items: center;
+    z-index: 5;
 }
 
 .header__icon {

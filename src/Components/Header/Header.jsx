@@ -1,37 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import NavBackButton from '../NavBackButton/NavBackButton';
 import './Header.css'
 
-const Header = ({ title }) => {
-    const [backURL, setBackURL] = React.useState(null);
+const Header = ({ title, back}) => {
+    const navigate = useNavigate();
 
-    React.useEffect(() => {
-        switch (title) {
-			case 'Categories':
-				setBackURL(null);
-                break;
-			case 'Sub-categories':
-				setBackURL('/cats')
-                break;
-
-            case 'Product':
-                setBackURL('/sub_cats')
-                break;
-			default:
-				break;
-		}
-
-        console.log(backURL);
-    }, [title])
+    const backClickHandler = () => {
+        navigate(-1);
+    }
 
     return (
         <header>
             <div style={{ paddingTop: '4px'}} className='header__icon'>
-                {backURL && 
-                <Link to={backURL}>
-                    <NavBackButton />
-                </Link>}
+                {back && 
+                    <div onClick={backClickHandler} className='back-button'>
+                        <NavBackButton />
+                    </div>}
             </div>
             { title }
         </header>

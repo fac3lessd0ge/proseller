@@ -1,0 +1,66 @@
+.buy__container {
+    margin-top: 10px;
+    width: 100%;
+    position: relative;
+}
+
+.buy__container button{
+    height: 30px;
+    font-weight: 800;
+    border-radius: 4px;
+    box-shadow: none;
+    border: none;
+}
+
+.buy > span:before {
+    content: 'Buy';
+}
+
+.buy {
+    width: 100%;
+    transition: 0.25s;
+}
+
+.buyBTN {
+    right: 0;
+    position: absolute;
+    background-color: #2984c6;
+    color: #fff;
+}
+
+.plus {
+    width: 40%;
+    transition: 0.25s;
+}
+
+.up {
+    transition: 1s;
+    z-index: 1 !important;
+    transform: scale(1) !important;
+}
+
+.plus > span:before {
+    transition: 1s;
+    content: '+';
+}
+
+
+.buy__count {
+    position: absolute;
+    right: 48%;
+    display: grid;
+    height: 30px;
+    width: 5%;
+    place-items: center;
+    z-index: -1;
+}
+
+.minusBTN {
+    width: 40%;
+    position: absolute;
+    left: 0;
+    z-index: -1;
+    border-bottom: none;
+    transform: scale(0.9);
+    transition: 0.1s;
+}

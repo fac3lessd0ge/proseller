@@ -2,25 +2,25 @@
 @font-face {
   font-family: Roboto;
   src: url(./Assets/Fonts/Roboto-Bold.ttf) format('truetype');
-  font-size: 700;
+  font-weight: 700;
 }
 
 @font-face {
   font-family: Roboto;
   src: url(./Assets/Fonts/Roboto-Black.ttf) format('truetype');
-  font-size: 800;
+  font-weight: 800;
 }
 
 @font-face {
   font-family: Roboto;
   src: url(./Assets/Fonts/Roboto-Medium.ttf) format('truetype');
-  font-size: 400;
+  font-weight: 400;
 }
 
 @font-face {
   font-family: Roboto;
   src: url(./Assets/Fonts/Roboto-Light.ttf) format('truetype');
-  font-size: 300;
+  font-weight: 300;
 }
 
 
@@ -31,10 +31,10 @@
 }
 
 html {
-  height: 100%;
+  width: 100vw;
   color: #fff;
   font-family: Roboto;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 #root {

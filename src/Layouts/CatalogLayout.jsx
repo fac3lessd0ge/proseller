@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import Catalog from '../Components/Catalog/Catalog';
+import CatalogItem from '../Components/CatalogItem/CatalogItem';
 import Header from '../Components/Header/Header';
 
 const fakeServerCategoriesResponse = {
@@ -7,9 +9,53 @@ const fakeServerCategoriesResponse = {
     image: 'https://sun9-41.userapi.com/s/v1/ig2/bgppkepmNndEH11WiV1v2X4vqrfdQoEHGOcCSWCY34UHCtJW7F0ZOVu-X99ynvc55FVUzzSkvQS64c-RkDwbCuIa.jpg?size=1080x1055&quality=96&type=album',
     description: 'Lavandos. Pachka papiros, prish na zhope volosney obros, ya ne obsos, poluchi v ebasos otvet skoree na moy glavniy vopros',
     root_category: 0,
-    sub_category: [5],
+    sub_category: [
+        {
+            id: 1,
+            name: 'sub-category 1',
+            image: 'https://sun9-41.userapi.com/s/v1/ig2/bgppkepmNndEH11WiV1v2X4vqrfdQoEHGOcCSWCY34UHCtJW7F0ZOVu-X99ynvc55FVUzzSkvQS64c-RkDwbCuIa.jpg?size=1080x1055&quality=96&type=album',
+            description: 'sub-category child num.1'
+        },
+        {
+            id: 1,
+            name: 'sub-category 1',
+            image: 'https://sun9-41.userapi.com/s/v1/ig2/bgppkepmNndEH11WiV1v2X4vqrfdQoEHGOcCSWCY34UHCtJW7F0ZOVu-X99ynvc55FVUzzSkvQS64c-RkDwbCuIa.jpg?size=1080x1055&quality=96&type=album',
+            description: 'sub-category child num.1'
+        },
+        {
+            id: 1,
+            name: 'sub-category 1',
+            image: 'https://sun9-41.userapi.com/s/v1/ig2/bgppkepmNndEH11WiV1v2X4vqrfdQoEHGOcCSWCY34UHCtJW7F0ZOVu-X99ynvc55FVUzzSkvQS64c-RkDwbCuIa.jpg?size=1080x1055&quality=96&type=album',
+            description: 'sub-category child num.1'
+        },
+        {
+            id: 1,
+            name: 'sub-category 1',
+            image: 'https://sun9-41.userapi.com/s/v1/ig2/bgppkepmNndEH11WiV1v2X4vqrfdQoEHGOcCSWCY34UHCtJW7F0ZOVu-X99ynvc55FVUzzSkvQS64c-RkDwbCuIa.jpg?size=1080x1055&quality=96&type=album',
+            description: 'sub-category child num.1'
+        }
+    ],
     products: [
         {
+            id: 1,
+            name: 'child-product 1',
+            image: 'https://sun9-6.userapi.com/s/v1/ig2/Xzl86p1V3BkL0JWRS3exVXrB5UPDTNsRHbI8hd_uCPL5YpagB-MW2nNpz3kwcc8w1sZ-2KXNxpQXi8zGfSj3dTrr.jpg?size=1290x970&quality=96&type=album',
+            mini_desc: 'some mini descriptionsome mini descriptionsome mini description',
+            quantity: 0,
+            price: 1488,
+            fast_buy: false
+        },
+        {
+            id: 2,
+            name: 'child-product 2',
+            image: 'https://sun9-6.userapi.com/s/v1/ig2/Xzl86p1V3BkL0JWRS3exVXrB5UPDTNsRHbI8hd_uCPL5YpagB-MW2nNpz3kwcc8w1sZ-2KXNxpQXi8zGfSj3dTrr.jpg?size=1290x970&quality=96&type=album',
+            mini_desc: 'some mini description',
+            quantity: 0,
+            price: 228,
+            fast_buy: true
+        },
+        {
+            id: 1,
             name: 'child-product 1',
             image: 'https://sun9-6.userapi.com/s/v1/ig2/Xzl86p1V3BkL0JWRS3exVXrB5UPDTNsRHbI8hd_uCPL5YpagB-MW2nNpz3kwcc8w1sZ-2KXNxpQXi8zGfSj3dTrr.jpg?size=1290x970&quality=96&type=album',
             mini_desc: 'some mini description',
@@ -18,6 +64,61 @@ const fakeServerCategoriesResponse = {
             fast_buy: false
         },
         {
+            id: 2,
+            name: 'child-product 2',
+            image: 'https://sun9-6.userapi.com/s/v1/ig2/Xzl86p1V3BkL0JWRS3exVXrB5UPDTNsRHbI8hd_uCPL5YpagB-MW2nNpz3kwcc8w1sZ-2KXNxpQXi8zGfSj3dTrr.jpg?size=1290x970&quality=96&type=album',
+            mini_desc: 'some mini description',
+            quantity: 0,
+            price: 228,
+            fast_buy: true
+        },
+        {
+            id: 1,
+            name: 'child-product 1',
+            image: 'https://sun9-6.userapi.com/s/v1/ig2/Xzl86p1V3BkL0JWRS3exVXrB5UPDTNsRHbI8hd_uCPL5YpagB-MW2nNpz3kwcc8w1sZ-2KXNxpQXi8zGfSj3dTrr.jpg?size=1290x970&quality=96&type=album',
+            mini_desc: 'some mini description',
+            quantity: 0,
+            price: 1488,
+            fast_buy: false
+        },
+        {
+            id: 2,
+            name: 'child-product 2',
+            image: 'https://sun9-6.userapi.com/s/v1/ig2/Xzl86p1V3BkL0JWRS3exVXrB5UPDTNsRHbI8hd_uCPL5YpagB-MW2nNpz3kwcc8w1sZ-2KXNxpQXi8zGfSj3dTrr.jpg?size=1290x970&quality=96&type=album',
+            mini_desc: 'some mini description',
+            quantity: 0,
+            price: 228,
+            fast_buy: true
+        },
+        {
+            id: 1,
+            name: 'child-product 1',
+            image: 'https://sun9-6.userapi.com/s/v1/ig2/Xzl86p1V3BkL0JWRS3exVXrB5UPDTNsRHbI8hd_uCPL5YpagB-MW2nNpz3kwcc8w1sZ-2KXNxpQXi8zGfSj3dTrr.jpg?size=1290x970&quality=96&type=album',
+            mini_desc: 'some mini description',
+            quantity: 0,
+            price: 1488,
+            fast_buy: false
+        },
+        {
+            id: 2,
+            name: 'child-product 2',
+            image: 'https://sun9-6.userapi.com/s/v1/ig2/Xzl86p1V3BkL0JWRS3exVXrB5UPDTNsRHbI8hd_uCPL5YpagB-MW2nNpz3kwcc8w1sZ-2KXNxpQXi8zGfSj3dTrr.jpg?size=1290x970&quality=96&type=album',
+            mini_desc: 'some mini description',
+            quantity: 0,
+            price: 228,
+            fast_buy: true
+        },
+        {
+            id: 1,
+            name: 'child-product 1',
+            image: 'https://sun9-6.userapi.com/s/v1/ig2/Xzl86p1V3BkL0JWRS3exVXrB5UPDTNsRHbI8hd_uCPL5YpagB-MW2nNpz3kwcc8w1sZ-2KXNxpQXi8zGfSj3dTrr.jpg?size=1290x970&quality=96&type=album',
+            mini_desc: 'some mini description',
+            quantity: 0,
+            price: 1488,
+            fast_buy: false
+        },
+        {
+            id: 2,
             name: 'child-product 2',
             image: 'https://sun9-6.userapi.com/s/v1/ig2/Xzl86p1V3BkL0JWRS3exVXrB5UPDTNsRHbI8hd_uCPL5YpagB-MW2nNpz3kwcc8w1sZ-2KXNxpQXi8zGfSj3dTrr.jpg?size=1290x970&quality=96&type=album',
             mini_desc: 'some mini description',
@@ -48,28 +149,44 @@ const fakeServerProductResponse = {
 const CatalogLayout = ({ headerTitle, type }) => {
     const [serverData, setServerData] = React.useState(null);
 
-
+    let { id } = useParams();
+     
     React.useEffect(() => {
+        // eslint-disable-next-line default-case
         switch (type) {
             case 'test_categories':
                 setServerData(fakeServerCategoriesResponse);
-                break;
-        
-            case 'test_product':
-                setServerData(fakeServerProductResponse);
-                break;
-            
-            default:
                 break;
         }
     }, [])
     
     return (
         <>
-            <Header title={headerTitle} />
+            <Header title={headerTitle} back={Number(id) === 0 ? false : true } />
             {serverData && <Catalog type={type} data={serverData} />}
-            <div style={{ paddingTop:'calc(min(9vh, 95px))', fontWeight: '300' }} className="main_zagl">
-                {serverData && JSON.stringify(serverData)}
+            <div className="catalog__container" style={{ paddingTop : 'calc(min(9vh, 95px))' }}>
+                {serverData?.products?.length !== 0 && serverData?.products.map((element, index) => 
+                    <CatalogItem
+                        key={index} 
+                        name={element.name}
+                        description={element.mini_desc}
+                        imgUrl={element.image}
+                        product={true}
+                        price={element.price}
+                        fastbuy={element.fast_buy}
+                        id={element.id}
+                    />
+                )}
+                {serverData?.sub_category?.length !== 0 && serverData?.sub_category.map((element, index) => 
+                    <CatalogItem 
+                        key={index}
+                        name={element.name}
+                        imgUrl={element.image}
+                        description={element.description}
+                        id={element.id}
+                        product={false}
+                    />
+                )}
             </div>
         </>
     );
