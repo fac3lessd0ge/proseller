@@ -1,0 +1,8 @@
+{
+  "short_name": "React App",
+  "name": "Pro-Seller telegram web-app",
+  "start_url": "./cats",
+  "display": "standalone",
+  "theme_color": "#0b2333",
+  "background_color": "#03090d"
+}
