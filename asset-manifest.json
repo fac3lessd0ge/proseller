@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.fba04620.css",
-    "main.js": "/static/js/main.f28563ae.js",
-    "static/media/Roboto-Medium.ttf": "/static/media/Roboto-Medium.7c8d04cd831df3033c8a.ttf",
-    "static/media/Roboto-Black.ttf": "/static/media/Roboto-Black.cf56c1b149d0a5e8d7c6.ttf",
-    "static/media/Roboto-Bold.ttf": "/static/media/Roboto-Bold.f80816a5455d171f948d.ttf",
-    "static/media/Roboto-Light.ttf": "/static/media/Roboto-Light.333da16a3f3cc391d087.ttf",
-    "index.html": "/index.html",
-    "static/media/arrow-back.svg": "/static/media/arrow-back.0605804eef30c58387b3942e6dd91b68.svg",
-    "main.fba04620.css.map": "/static/css/main.fba04620.css.map",
-    "main.f28563ae.js.map": "/static/js/main.f28563ae.js.map"
+    "main.css": "/proseller/static/css/main.ee891bca.css",
+    "main.js": "/proseller/static/js/main.a264e48c.js",
+    "static/media/Roboto-Medium.ttf": "/proseller/static/media/Roboto-Medium.7c8d04cd831df3033c8a.ttf",
+    "static/media/Roboto-Black.ttf": "/proseller/static/media/Roboto-Black.cf56c1b149d0a5e8d7c6.ttf",
+    "static/media/Roboto-Bold.ttf": "/proseller/static/media/Roboto-Bold.f80816a5455d171f948d.ttf",
+    "static/media/Roboto-Light.ttf": "/proseller/static/media/Roboto-Light.333da16a3f3cc391d087.ttf",
+    "index.html": "/proseller/index.html",
+    "static/media/arrow-back.svg": "/proseller/static/media/arrow-back.0605804eef30c58387b3942e6dd91b68.svg",
+    "main.ee891bca.css.map": "/proseller/static/css/main.ee891bca.css.map",
+    "main.a264e48c.js.map": "/proseller/static/js/main.a264e48c.js.map"
   },
   "entrypoints": [
-    "static/css/main.fba04620.css",
-    "static/js/main.f28563ae.js"
+    "static/css/main.ee891bca.css",
+    "static/js/main.a264e48c.js"
   ]
 }
