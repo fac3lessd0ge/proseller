@@ -2,13 +2,15 @@ import React from 'react';
 
 import './BuyButton.css';
 
-const BuyButton = () => {
+const BuyButton = ({ max = 10000}) => {
     const [count, setCount] = React.useState(0);
     const [buyClass, setBuyClass] = React.useState('buyBTN buy');
     const [minusClass, setMinusClass] = React.useState('minusBTN');
 
     const buyClickHandler = () => {
-        setCount(() => count + 1);
+        if (count < max) {
+            setCount(() => count + 1);
+        }
     }
 
     const minusClickHandler = () => {
@@ -16,11 +18,14 @@ const BuyButton = () => {
     }
 
     React.useEffect(() => {
-        if (count > 0) {
+        if (count === max) {
+            setBuyClass('buyBTN max');
+            setMinusClass('minusBTN up');
+        }
+        else if (count > 0) {
             setBuyClass('buyBTN plus');
-            setTimeout(() => {
-                setMinusClass('minusBTN up');
-            }, 0.5);
+            setMinusClass('minusBTN up');
+
         }
         else {
             setBuyClass('buyBTN buy');
@@ -29,7 +34,7 @@ const BuyButton = () => {
     }, [count])
 
     return (
-        <div className="buy__container">
+        <div className="buy__container" style={{marginLeft: '2px'}}>
             <button onClick={buyClickHandler} className={buyClass}><span></span></button>
             <div className="buy__count">{count}</div>
             <button onClick={minusClickHandler} className={minusClass}><span>-</span></button>

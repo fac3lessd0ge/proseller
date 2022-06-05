@@ -1,0 +1,24 @@
+.control-dots {
+    display: flex;
+    justify-content: center;
+    background-color: #03090d;
+    height: 10%;
+    align-items: center;
+    bottom: -50px !important; 
+    position: absolute;
+}
+
+.carousel-status {
+    visibility: hidden;
+}
+
+.carousel-image {
+    min-height: 250px !important;
+    height: 30vh;
+    width: 100vw;
+    object-fit: cover;
+}
+
+.carousel.carousel-slider {
+    overflow:visible !important;
+}

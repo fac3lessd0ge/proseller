@@ -28,13 +28,19 @@
     color: #fff;
 }
 
+.max {
+    width: 40%;
+    transition: 0.25s;
+    background-color: #be2b30;
+}
+
 .plus {
     width: 40%;
     transition: 0.25s;
 }
 
 .up {
-    transition: 1s;
+    transition: 0.5s !important;
     z-index: 1 !important;
     transform: scale(1) !important;
 }
@@ -44,6 +50,10 @@
     content: '+';
 }
 
+.max > span:before {
+    transition: 1s;
+    content: 'max';
+}
 
 .buy__count {
     position: absolute;
@@ -62,5 +72,5 @@
     z-index: -1;
     border-bottom: none;
     transform: scale(0.9);
-    transition: 0.1s;
+    transition: 0.2s;
 }

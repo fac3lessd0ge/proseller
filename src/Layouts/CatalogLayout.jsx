@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Catalog from '../Components/Catalog/Catalog';
@@ -158,6 +159,8 @@ const CatalogLayout = ({ headerTitle, type }) => {
                 setServerData(fakeServerCategoriesResponse);
                 break;
         }
+
+        axios.get(`https://proseller.pro/api/category/${id}`).then((res) => console.log(res.data))
     }, [])
     
     return (
