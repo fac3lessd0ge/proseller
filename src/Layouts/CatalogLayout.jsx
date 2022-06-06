@@ -71,7 +71,7 @@ const fakeServerCategoriesResponse = {
             mini_desc: 'some mini description',
             quantity: 0,
             price: 228,
-            fast_buy: true
+            fast_buy: false
         },
         {
             id: 1,

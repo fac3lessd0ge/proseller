@@ -10,7 +10,7 @@ import './ItemLayout.css';
 const fakeServerItemResponse = {
     id: 1,
     name: '300 алмазов',
-    description: '300 алмазов на ваш аккаунт',
+    description: '300 алмазов на ваш аккаунт. Вот вы представьте: играете вы в вашу любимую игру, и вроде бы всё славно, вы делаете в ней успехи - жизнь хороша. Но в один поистине ужасный момент с вами выйдет на контакт какой нибудь условный василий, которому 12 лет, и одарит вас крайне грубым и унизительным словом за то, что у вас нет новенького красивого предмета, а у него есть. А нет у вас его потому, что у вас не хватило на него всего каких то 300 алмазов. И вы вроде бы человек взрослый, и необдуманные слова ребёнка вас не сильно ранят, но всё же его обзывательства неуловимым шлейфом тянутся за вами, и удовольствие от игры уже словно не то. Но ведь это не проблема, ведь на нашем сервисе вы можете приобрести те самые 300 алмазов, и показать этому мелкому опездалу кто тут блять папочка.',
     quantity: 3,
     price: 300,
     familiarization: false,
@@ -47,10 +47,10 @@ const ItemLayout = () => {
                 <div className='catalog__container' style={{ paddingTop : 'calc(min(3vh, 95px))' }}>
                     <PhotoCarousel imgArr={serverData?.image} />
                     <div style={{width: '100%', display: 'grid', placeItems: 'center', fontSize: '30px'}}>{serverData.name}</div>
-                    <div style={{width: '100%', display: 'grid', placeItems: 'center', marginTop: '20px'}}>{serverData.description}</div>
-                    <div className="btn-container" style={{width: '95%', marginLeft: '2.5%'}}>
+                    <div style={{ padding: '0 12px',  display: 'grid', placeItems: 'center', marginTop: '20px'}}>{serverData.description}</div>
+                    <div style={{width: '100%', display: 'grid', placeItems: 'center', marginTop: '10px'}}>Максимальное количество: {serverData.quantity}</div>
+                    <div className="btn-container" style={{width: '95%', marginLeft: '2.5%', height: '38px', marginBottom: '5%'}}>
                         <BuyButton max={serverData.quantity}/>
-
                     </div>
                 </div>
             }

@@ -23,7 +23,10 @@
   font-weight: 300;
 }
 
-
+a {
+  text-decoration: none;
+  color: #fff;
+}
 
 * {
   margin: 0;

@@ -1,4 +1,6 @@
 import React from 'react';
+import useDebounce from '../../Hooks/useDebounce';
+import useUpdateEffect from '../../Hooks/useUpdateEffect';
 
 import './BuyButton.css';
 
@@ -6,6 +8,8 @@ const BuyButton = ({ max = 10000}) => {
     const [count, setCount] = React.useState(0);
     const [buyClass, setBuyClass] = React.useState('buyBTN buy');
     const [minusClass, setMinusClass] = React.useState('minusBTN');
+
+    const debouncedCount = useDebounce(count, 400);
 
     const buyClickHandler = () => {
         if (count < max) {
@@ -32,6 +36,10 @@ const BuyButton = ({ max = 10000}) => {
             setMinusClass('minusBTN');
         }
     }, [count])
+
+    useUpdateEffect(() => {
+        console.log('debounce!!! make api call' + debouncedCount);
+    }, [debouncedCount])
 
     return (
         <div className="buy__container" style={{marginLeft: '2px'}}>

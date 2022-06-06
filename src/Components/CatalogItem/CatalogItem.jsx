@@ -5,6 +5,17 @@ import BuyButton from '../CatalogBuyButton/BuyButton';
 import './CatalogItem.css';
 
 const CatalogItem = ({ id, product, name, imgUrl, description, price = undefined, fastbuy = true }) => {
+    const [linkTo, setLinkTo] = React.useState('');
+
+    React.useEffect(() => {
+        if (product && !fastbuy) { 
+            setLinkTo(`/proseller/item/${id}`);
+        }
+        else if (!product) {
+            setLinkTo(`/proseller/cats/${id}`)
+        }
+    }, [])
+    
     return (
         <div className={`item-wrapper ${product ? '': 'm10'}`}>
             <div className="catalog__item">
@@ -13,7 +24,7 @@ const CatalogItem = ({ id, product, name, imgUrl, description, price = undefined
                 </div>
                 <div className="catalog__info">
                     <div className="catalog__name">
-                        {name}
+                    {linkTo ? <Link to = {linkTo}>{name}</Link> : <>{name}</>}
                     </div>
                     <div className="catalog__description">
                         {description.length > 40 ?  description.substring(0, 40) + '...' : description}
