@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/proseller/static/css/main.6c727f92.css",
-    "main.js": "/proseller/static/js/main.fd2f3f3a.js",
+    "main.css": "/proseller/static/css/main.84b01cce.css",
+    "main.js": "/proseller/static/js/main.ded4718b.js",
     "static/media/Roboto-Medium.ttf": "/proseller/static/media/Roboto-Medium.7c8d04cd831df3033c8a.ttf",
     "static/media/Roboto-Black.ttf": "/proseller/static/media/Roboto-Black.cf56c1b149d0a5e8d7c6.ttf",
     "static/media/Roboto-Bold.ttf": "/proseller/static/media/Roboto-Bold.f80816a5455d171f948d.ttf",
     "static/media/Roboto-Light.ttf": "/proseller/static/media/Roboto-Light.333da16a3f3cc391d087.ttf",
     "index.html": "/proseller/index.html",
     "static/media/arrow-back.svg": "/proseller/static/media/arrow-back.0605804eef30c58387b3942e6dd91b68.svg",
-    "main.6c727f92.css.map": "/proseller/static/css/main.6c727f92.css.map",
-    "main.fd2f3f3a.js.map": "/proseller/static/js/main.fd2f3f3a.js.map"
+    "main.84b01cce.css.map": "/proseller/static/css/main.84b01cce.css.map",
+    "main.ded4718b.js.map": "/proseller/static/js/main.ded4718b.js.map"
   },
   "entrypoints": [
-    "static/css/main.6c727f92.css",
-    "static/js/main.fd2f3f3a.js"
+    "static/css/main.84b01cce.css",
+    "static/js/main.ded4718b.js"
   ]
 }
