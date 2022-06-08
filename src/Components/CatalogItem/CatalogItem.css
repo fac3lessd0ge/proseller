@@ -28,7 +28,7 @@
 }
 
 .catalog__price:after {
-    content: ' \20BD'
+    content: ' \0024'
 }
 
 .catalog__avatar > img {

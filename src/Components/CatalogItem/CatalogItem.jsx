@@ -20,14 +20,14 @@ const CatalogItem = ({ id, product, name, imgUrl, description, price = undefined
         <div className={`item-wrapper ${product ? '': 'm10'}`}>
             <div className="catalog__item">
                 <div className="catalog__avatar">
-                    <img src={imgUrl} alt="product avatar" />
+                    <img src={"https://proseller.pro" + imgUrl.slice(12)} alt="product avatar" />
                 </div>
                 <div className="catalog__info">
                     <div className="catalog__name">
                     {linkTo ? <Link to = {linkTo}>{name}</Link> : <>{name}</>}
                     </div>
                     <div className="catalog__description">
-                        {description.length > 40 ?  description.substring(0, 40) + '...' : description}
+                        {description?.length > 40 ?  description.substring(0, 40) + '...' : description}
                     </div>
                     {product && 
                         <div className="catalog__price">
@@ -36,7 +36,7 @@ const CatalogItem = ({ id, product, name, imgUrl, description, price = undefined
                     }
                 </div>
             </div>
-            {product && fastbuy && <BuyButton />}
+            {product && fastbuy && <BuyButton id = {id}/>}
             {product && !fastbuy && <Link to = {`/proseller/item/${id}`}><BuyButton /></Link>}
         </div>
     );

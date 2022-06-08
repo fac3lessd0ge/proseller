@@ -1,15 +1,19 @@
+import axios from 'axios';
 import React from 'react';
 import useDebounce from '../../Hooks/useDebounce';
 import useUpdateEffect from '../../Hooks/useUpdateEffect';
+import InitDataProvider, { InitDataContext } from '../../InitDataProvider';
 
 import './BuyButton.css';
 
-const BuyButton = ({ max = 10000}) => {
+const BuyButton = ({ id, max = 10000 }) => {
     const [count, setCount] = React.useState(0);
     const [buyClass, setBuyClass] = React.useState('buyBTN buy');
     const [minusClass, setMinusClass] = React.useState('minusBTN');
 
     const debouncedCount = useDebounce(count, 400);
+
+    const store = React.useContext(InitDataContext);
 
     const buyClickHandler = () => {
         if (count < max) {
@@ -38,7 +42,22 @@ const BuyButton = ({ max = 10000}) => {
     }, [count])
 
     useUpdateEffect(() => {
-        console.log('debounce!!! make api call' + debouncedCount);
+        if (store.cartID) {
+            axios.post(`https://proseller.pro/api/basket${id}`, {
+            quantity: debouncedCount,
+            _auth: store.initData,
+            basket_id: store.cartID
+        })    
+        }
+
+        else {
+            axios.post(`https://proseller.pro/api/basket${id}`, {
+                quantity: debouncedCount,
+                _auth: store.initData
+            }).then((res) => {
+                store.cartID = res.data.basket_id;
+            })
+        } 
     }, [debouncedCount])
 
     return (

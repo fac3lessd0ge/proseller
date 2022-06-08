@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import CartButton from '../CartButton/CartButtom';
 import NavBackButton from '../NavBackButton/NavBackButton';
 import './Header.css'
 
-const Header = ({ title, back}) => {
+const Header = ({ title, back, withCart = true}) => {
     const navigate = useNavigate();
 
     const backClickHandler = () => {
@@ -20,6 +21,12 @@ const Header = ({ title, back}) => {
                     </div>}
             </div>
             { title }
+
+            {withCart && 
+            <div className="header__cart">
+                <CartButton />
+            </div>}
+            
         </header>
     );
 }

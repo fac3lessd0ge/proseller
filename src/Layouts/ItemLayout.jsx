@@ -4,8 +4,7 @@ import { useParams } from 'react-router-dom';
 import BuyButton from '../Components/CatalogBuyButton/BuyButton';
 import Header from '../Components/Header/Header';
 import PhotoCarousel from '../Components/PhotoCarousel/PhotoCarousel';
-
-import './ItemLayout.css';
+import CartLink from '../Components/CartLink/CartLink';
 
 const fakeServerItemResponse = {
     id: 1,
@@ -30,12 +29,12 @@ const ItemLayout = () => {
     const { id } = useParams();
 
     React.useEffect(() => {
-        axios.get(`https://proseller.pro/api/item/${id}`)
+        axios.get(`https://proseller.pro/api/product/${id}`)
             .then((res) => {
-                setServerData(res.data);
+                setServerData(res.data.results);
+                console.log(res.data);
             })
             .catch((error) => {
-                console.log('не вышло');
                 setServerData(fakeServerItemResponse);
             })
     }, [])
@@ -44,13 +43,21 @@ const ItemLayout = () => {
         <>
             <Header title={serverData ? serverData.name : 'Loading...'} back={true} />
             {serverData && 
-                <div className='catalog__container' style={{ paddingTop : 'calc(min(3vh, 95px))' }}>
-                    <PhotoCarousel imgArr={serverData?.image} />
+                <div className='catalog__container' style={{ paddingTop : 'calc(min(3vh, 95px))', paddingBottom: '50px' }}>
+                    <PhotoCarousel imgArr={serverData?.images} />
                     <div style={{width: '100%', display: 'grid', placeItems: 'center', fontSize: '30px'}}>{serverData.name}</div>
                     <div style={{ padding: '0 12px',  display: 'grid', placeItems: 'center', marginTop: '20px'}}>{serverData.description}</div>
-                    <div style={{width: '100%', display: 'grid', placeItems: 'center', marginTop: '10px'}}>Максимальное количество: {serverData.quantity}</div>
+                    <div style={{width: '100%', display: 'grid', placeItems: 'center', marginTop: '10px'}}>Максимальное количество: {serverData.quantity}  <div className='catalog__price'>{serverData.price}</div></div>
+                    <div className="familize" style={{width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '15px'}}>
+                        
+                        <input type={'checkbox'} />
+                        {'Я ознакомился с товаром'}
+                    </div>
                     <div className="btn-container" style={{width: '95%', marginLeft: '2.5%', height: '38px', marginBottom: '5%'}}>
                         <BuyButton max={serverData.quantity}/>
+                    </div>
+                    <div className="link-container" style={{position: 'fixed', marginLeft: '1px', bottom: '10px', width: '100%', display: 'grid', placeItems: 'center'}}>
+                        <CartLink text={'В корзину'} />
                     </div>
                 </div>
             }

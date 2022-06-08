@@ -1,0 +1,15 @@
+.cart__link {
+    width: 95%;
+    height: 38px;
+    background-color: #06a209;
+    border-radius: 4px;
+    font-size: 18px;
+    display: grid;
+    place-items: center;
+    transition: 0.1s;
+}
+
+.cart__link:active {
+    background-color: #09780b;
+    transition: 0.1s;
+}

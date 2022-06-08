@@ -1,9 +1,11 @@
 import axios from 'axios';
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import CartLink from '../Components/CartLink/CartLink';
 import Catalog from '../Components/Catalog/Catalog';
 import CatalogItem from '../Components/CatalogItem/CatalogItem';
 import Header from '../Components/Header/Header';
+import { InitDataContext } from '../InitDataProvider';
 
 const fakeServerCategoriesResponse = {
     name: 'Napas',
@@ -150,37 +152,89 @@ const fakeServerProductResponse = {
 const CatalogLayout = ({ headerTitle, type }) => {
     const [serverData, setServerData] = React.useState(null);
 
+    const [isLoading, setIsLoading] = React.useState(true);
+
+    const store = React.useContext(InitDataContext);
+
     let { id } = useParams();
      
     React.useEffect(() => {
-        // eslint-disable-next-line default-case
-        switch (type) {
-            case 'test_categories':
-                setServerData(fakeServerCategoriesResponse);
-                break;
-        }
-
-        axios.get(`https://proseller.pro/api/category/${id}`).then((res) => console.log(res.data))
-    }, [])
+        axios.get(`https://proseller.pro/api/category/${id}`).then((res) => {
+            console.log(res.data.results);
+            setServerData(res.data.results)
+        }).then((res) => {setIsLoading(false);});
+        console.log(store);
+    }, [id])
     
     return (
         <>
             <Header title={headerTitle} back={Number(id) === 0 ? false : true } />
-            {serverData && <Catalog type={type} data={serverData} />}
-            <div className="catalog__container" style={{ paddingTop : 'calc(min(9vh, 95px))' }}>
-                {serverData?.products?.length !== 0 && serverData?.products.map((element, index) => 
-                    <CatalogItem
+            <div className="catalog__container" style={{ paddingTop : 'calc(min(9vh, 95px))', paddingBottom: '50px' }}>
+                {!isLoading && Array.isArray(serverData) && serverData?.map((element, index) => {
+                    return (<>
+                        <CatalogItem
                         key={index} 
                         name={element.name}
-                        description={element.mini_desc}
+                        description={element.description}
+                        imgUrl={element.image}
+                        product={false}
+                        id={element.id}
+                        /> 
+                        
+                        {element?.sub_category?.map((element, id) => 
+                            <CatalogItem
+                                id={element.id}
+                                name={element.name}
+                                description={element.mini_desc}
+                                imgUrl={element.image}
+                                key={id}
+                            />
+                        )}
+
+                        {element?.products?.map((element, id) => 
+                            <CatalogItem 
+                                product={true}
+                                name={element.name}
+                                description={element.mini_desc}
+                                fastbuy={element.fast_buy}
+                                price={element.price}
+                                imgUrl={element.image}
+                                key={id}
+                            />
+                        )}
+                    </>
+                )}
+                )}
+
+                {!isLoading && !Array.isArray(serverData) && serverData?.sub_category?.map((element, index) => {
+                    return <>
+                        <CatalogItem
+                        key={index} 
+                        name={element.name}
+                        description={element.description}
+                        imgUrl={element.image}
+                        product={false}
+                        id={element.id}
+                        /> 
+                    </>
+                    }
+                )}
+                {!isLoading && !Array.isArray(serverData) && serverData?.products?.map((element, index) => {
+                    return <>
+                        <CatalogItem
+                        key={index}
+                        name={element.name}
+                        description={element.description}
                         imgUrl={element.image}
                         product={true}
                         price={element.price}
                         fastbuy={element.fast_buy}
                         id={element.id}
-                    />
+                        /> 
+                    </>
+                    }
                 )}
-                {serverData?.sub_category?.length !== 0 && serverData?.sub_category.map((element, index) => 
+                {/* {serverData?.sub_category?.length !== 0 && serverData?.map((element, index) => 
                     <CatalogItem 
                         key={index}
                         name={element.name}
@@ -189,7 +243,10 @@ const CatalogLayout = ({ headerTitle, type }) => {
                         id={element.id}
                         product={false}
                     />
-                )}
+                )} */}
+                <div className="link-container" style={{position: 'fixed', bottom: '10px', width: '100%', display: 'grid', placeItems: 'center'}}>
+                    <CartLink text={'В корзину'} />
+                </div>
             </div>
         </>
     );
