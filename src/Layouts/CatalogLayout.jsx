@@ -194,6 +194,7 @@ const CatalogLayout = ({ headerTitle, type }) => {
                         {element?.products?.map((element, id) => 
                             <CatalogItem 
                                 product={true}
+                                id={element.id}
                                 name={element.name}
                                 description={element.mini_desc}
                                 fastbuy={element.fast_buy}
