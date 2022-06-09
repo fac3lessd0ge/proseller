@@ -181,16 +181,6 @@ const CatalogLayout = ({ headerTitle, type }) => {
                         id={element.id}
                         /> 
                         
-                        {element?.sub_category?.map((element, id) => 
-                            <CatalogItem
-                                id={element.id}
-                                name={element.name}
-                                description={element.mini_desc}
-                                imgUrl={element.image}
-                                key={id}
-                            />
-                        )}
-
                         {element?.products?.map((element, id) => 
                             <CatalogItem 
                                 product={true}
@@ -203,23 +193,22 @@ const CatalogLayout = ({ headerTitle, type }) => {
                                 key={id}
                             />
                         )}
+
+                        {element?.sub_category?.map((element, id) => 
+                            <CatalogItem
+                                id={element.id}
+                                name={element.name}
+                                description={element.mini_desc}
+                                imgUrl={element.image}
+                                key={id}
+                            />
+                        )}
+
+                        
                     </>
                 )}
                 )}
 
-                {!isLoading && !Array.isArray(serverData) && serverData?.sub_category?.map((element, index) => {
-                    return <>
-                        <CatalogItem
-                        key={index} 
-                        name={element.name}
-                        description={element.description}
-                        imgUrl={element.image}
-                        product={false}
-                        id={element.id}
-                        /> 
-                    </>
-                    }
-                )}
                 {!isLoading && !Array.isArray(serverData) && serverData?.products?.map((element, index) => {
                     return <>
                         <CatalogItem
@@ -230,6 +219,20 @@ const CatalogLayout = ({ headerTitle, type }) => {
                         product={true}
                         price={element.price}
                         fastbuy={element.fast_buy}
+                        id={element.id}
+                        /> 
+                    </>
+                    }
+                )}
+
+                {!isLoading && !Array.isArray(serverData) && serverData?.sub_category?.map((element, index) => {
+                    return <>
+                        <CatalogItem
+                        key={index} 
+                        name={element.name}
+                        description={element.description}
+                        imgUrl={element.image}
+                        product={false}
                         id={element.id}
                         /> 
                     </>

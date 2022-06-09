@@ -54,7 +54,7 @@ const ItemLayout = () => {
                         {'Я ознакомился с товаром'}
                     </div>
                     <div className="btn-container" style={{width: '95%', marginLeft: '2.5%', height: '38px', marginBottom: '5%'}}>
-                        <BuyButton max={serverData.quantity}/>
+                        <BuyButton id={id} max={serverData.quantity}/>
                     </div>
                     <div className="link-container" style={{position: 'fixed', marginLeft: '1px', bottom: '10px', width: '100%', display: 'grid', placeItems: 'center'}}>
                         <CartLink text={'В корзину'} />

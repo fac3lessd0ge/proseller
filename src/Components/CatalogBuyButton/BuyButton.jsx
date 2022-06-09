@@ -43,7 +43,8 @@ const BuyButton = ({ id, max = 10000 }) => {
 
     useUpdateEffect(() => {
         if (store.cartID) {
-            axios.post(`https://proseller.pro/api/basket${id}`, {
+            axios.post(`https://proseller.pro/api/basket/${id}`, {
+            id: id,
             quantity: debouncedCount,
             _auth: store.initData,
             basket_id: store.cartID
@@ -51,12 +52,14 @@ const BuyButton = ({ id, max = 10000 }) => {
         }
 
         else {
-            axios.post(`https://proseller.pro/api/basket${id}`, {
+            axios.post(`https://proseller.pro/api/basket/${id}`, {
+                id: id,
                 quantity: debouncedCount,
                 _auth: store.initData
             }).then((res) => {
-                store.cartID = res.data.basket_id;
-            })
+                console.log(res);
+                store.cartID = res.data.results.basket_id;
+            }).then(console.log(store.cartID))
         } 
     }, [debouncedCount])
 

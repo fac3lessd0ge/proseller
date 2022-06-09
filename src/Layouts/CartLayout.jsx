@@ -46,13 +46,9 @@ const CartLayout = () => {
 
     React.useEffect(() => {
         if (store.cartID) {
-            axios.post(`https://proseller.pro/api/basket/${store.cartID}`, {
-                _auth: store.initData
-            }).then((res) => {setServerData(res.data.order)}).then(() => setIsLoading(false));
-        }
-        else {
-            setServerData(fakeServDat);
-            //setEmpty(true);
+            axios.post(`https://proseller.pro/api/basket/${store.cartID}`).then((res) => {setServerData(res.data.results.products)}).then(() => {console.log(serverData); setIsLoading(false)});
+        } else {
+            setEmpty(true);
         }
     }, [])
 
@@ -65,19 +61,21 @@ const CartLayout = () => {
                     <CartLink text={'Вернуться к покупкам'} back={true}/>
                 </div>}
 
-                {!empty && <div style={{width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px'}}>
-                    {serverData?.products?.map((element, id) => 
-                        <div style={{width: '95%', border: '2px solid grey', borderRadius: '10px', height: '60px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '18px'}}>
+                {!isLoading && <div style={{width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px'}}>
+                    {serverData?.map((element, id) => {
+                        console.log(element);
+                        return <div style={{width: '95%', border: '2px solid grey', borderRadius: '10px', height: '60px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '18px'}}>
                             <div style={{marginLeft: '20px'}}>
                                 {element.name}
                             </div>
                             
+                            <div className="catalog__price" style={{margin: '0'}}>{element.price}</div>
 
                             <div style={{marginRight: '20px'}}>
-                                <CartAmountMeter startAmount={0} productID={element.id} />
+                                <CartAmountMeter startAmount={element.quantity} productID={element.id} />
                             </div>
                         </div>
-                    )}    
+                    })}    
                 </div>}
             </div>
         </>
