@@ -195,7 +195,7 @@ const CatalogLayout = ({ headerTitle, type }) => {
                             />
                         )} */}
 
-                        {element?.sub_category?.map((element, id) => 
+                        {/* {element?.sub_category?.map((element, id) => 
                             <Link to={`/proseller/cats/${element.id}`}>
                                 <CatalogItem
                                     id={element.id}
@@ -205,7 +205,7 @@ const CatalogLayout = ({ headerTitle, type }) => {
                                     key={id}
                                 />
                             </Link>
-                        )}
+                        )} */}
 
                         
                     </>
