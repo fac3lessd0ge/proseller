@@ -17,7 +17,8 @@ const CartAmountMeter = ({ productID, startAmount }) => {
             axios.post(`https://proseller.pro/api/basket/${productID}`, {
             quantity: debouncedCount,
             _auth: store.initData,
-            basket_id: store.cartID
+            basket_id: store.cartID,
+            id: productID
         })    
         }
 

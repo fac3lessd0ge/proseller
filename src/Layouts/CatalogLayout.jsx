@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import CartLink from '../Components/CartLink/CartLink';
 import Catalog from '../Components/Catalog/Catalog';
 import CatalogItem from '../Components/CatalogItem/CatalogItem';
@@ -172,16 +172,17 @@ const CatalogLayout = ({ headerTitle, type }) => {
             <div className="catalog__container" style={{ paddingTop : 'calc(min(9vh, 95px))', paddingBottom: '50px' }}>
                 {!isLoading && Array.isArray(serverData) && serverData?.map((element, index) => {
                     return (<>
-                        <CatalogItem
-                        key={index} 
-                        name={element.name}
-                        description={element.description}
-                        imgUrl={element.image}
-                        product={false}
-                        id={element.id}
-                        /> 
+                        <Link to={`/proseller/cats/${element.id}`}>
+                                <CatalogItem
+                                    id={element.id}
+                                    name={element.name}
+                                    description={element.mini_desc}
+                                    imgUrl={element.image}
+                                    key={id}
+                                />
+                            </Link>
                         
-                        {element?.products?.map((element, id) => 
+                        {/* {element?.products?.map((element, id) => 
                             <CatalogItem 
                                 product={true}
                                 id={element.id}
@@ -192,16 +193,18 @@ const CatalogLayout = ({ headerTitle, type }) => {
                                 imgUrl={element.image}
                                 key={id}
                             />
-                        )}
+                        )} */}
 
                         {element?.sub_category?.map((element, id) => 
-                            <CatalogItem
-                                id={element.id}
-                                name={element.name}
-                                description={element.mini_desc}
-                                imgUrl={element.image}
-                                key={id}
-                            />
+                            <Link to={`/proseller/cats/${element.id}`}>
+                                <CatalogItem
+                                    id={element.id}
+                                    name={element.name}
+                                    description={element.mini_desc}
+                                    imgUrl={element.image}
+                                    key={id}
+                                />
+                            </Link>
                         )}
 
                         
@@ -227,14 +230,15 @@ const CatalogLayout = ({ headerTitle, type }) => {
 
                 {!isLoading && !Array.isArray(serverData) && serverData?.sub_category?.map((element, index) => {
                     return <>
-                        <CatalogItem
-                        key={index} 
-                        name={element.name}
-                        description={element.description}
-                        imgUrl={element.image}
-                        product={false}
-                        id={element.id}
-                        /> 
+                        <Link to={`/proseller/cats/${element.id}`}>
+                                <CatalogItem
+                                    id={element.id}
+                                    name={element.name}
+                                    description={element.mini_desc}
+                                    imgUrl={element.image}
+                                    key={id}
+                                />
+                        </Link>
                     </>
                     }
                 )}
