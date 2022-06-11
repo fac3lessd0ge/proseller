@@ -28,6 +28,8 @@ const ItemLayout = () => {
     const [serverData, setServerData] = React.useState(null);
     const { id } = useParams();
 
+    const [active, setActive] = React.useState(false)
+
     React.useEffect(() => {
         axios.get(`https://proseller.pro/api/product/${id}`)
             .then((res) => {
@@ -38,6 +40,14 @@ const ItemLayout = () => {
                 setServerData(fakeServerItemResponse);
             })
     }, [])
+
+    const onCheckboxChange = (e) => {
+        if (e.currentTarget.checked) {
+            setActive(true);
+            return
+        }
+        setActive(false);
+    }
 
     return (
         <>
@@ -50,14 +60,14 @@ const ItemLayout = () => {
                     <div style={{width: '100%', display: 'grid', placeItems: 'center', marginTop: '10px'}}>Максимальное количество: {serverData.quantity}  <div className='catalog__price'>{serverData.price}</div></div>
                     <div className="familize" style={{width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '15px'}}>
                         
-                        <input type={'checkbox'} />
+                        <input onChange={onCheckboxChange} type={'checkbox'} />
                         {'Я ознакомился с товаром'}
                     </div>
                     <div className="btn-container" style={{width: '95%', marginLeft: '2.5%', height: '38px', marginBottom: '5%'}}>
-                        <BuyButton id={id} max={serverData.quantity}/>
+                        <BuyButton active={active} id={id} max={serverData.quantity}/>
                     </div>
                     <div className="link-container" style={{position: 'fixed', marginLeft: '1px', bottom: '10px', width: '100%', display: 'grid', placeItems: 'center'}}>
-                        <CartLink text={'В корзину'} />
+                        <CartLink text={'To cart'} />
                     </div>
                 </div>
             }

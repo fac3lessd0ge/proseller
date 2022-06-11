@@ -252,8 +252,8 @@ const CatalogLayout = ({ headerTitle, type }) => {
                         product={false}
                     />
                 )} */}
-                <div className="link-container" style={{position: 'fixed', bottom: '10px', width: '100%', display: 'grid', placeItems: 'center'}}>
-                    <CartLink text={'В корзину'} />
+                <div className="link-container" style={{position: 'fixed', bottom: '10px', width: '100%', display: 'grid', placeItems: 'center', zIndex: '100'}}>
+                    <CartLink text={'To Cart'} />
                 </div>
             </div>
         </>

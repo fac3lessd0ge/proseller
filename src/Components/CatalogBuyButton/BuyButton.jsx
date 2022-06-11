@@ -6,10 +6,12 @@ import InitDataProvider, { InitDataContext } from '../../InitDataProvider';
 
 import './BuyButton.css';
 
-const BuyButton = ({ id, max = 10000 }) => {
+const BuyButton = ({ id, max = 10000, active = true }) => {
     const [count, setCount] = React.useState(0);
     const [buyClass, setBuyClass] = React.useState('buyBTN buy');
     const [minusClass, setMinusClass] = React.useState('minusBTN');
+
+    console.log('rerender!');
 
     const debouncedCount = useDebounce(count, 400);
 
@@ -65,7 +67,7 @@ const BuyButton = ({ id, max = 10000 }) => {
 
     return (
         <div className="buy__container" style={{marginLeft: '2px'}}>
-            <button onClick={buyClickHandler} className={buyClass}><span></span></button>
+            <button style={active ? {} : {backgroundColor: 'grey'}} onClick={active ? buyClickHandler: () => {}} className={buyClass}><span></span></button>
             <div className="buy__count">{count}</div>
             <button onClick={minusClickHandler} className={minusClass}><span>-</span></button>
         </div>
