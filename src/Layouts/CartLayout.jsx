@@ -46,7 +46,7 @@ const CartLayout = () => {
 
     React.useEffect(() => {
         if (store.cartID) {
-            axios.post(`https://proseller.pro/api/basket/${store.cartID}`).then((res) => {setServerData(res.data.results.products)}).then(() => {console.log(serverData); setIsLoading(false)});
+            axios.post(`https://proseller.pro/api/basket`, {basket_id: store.cartID}).then((res) => {setServerData(res.data.results.products)}).then(() => {console.log(serverData); setIsLoading(false)});
         } else {
             setEmpty(true);
         }

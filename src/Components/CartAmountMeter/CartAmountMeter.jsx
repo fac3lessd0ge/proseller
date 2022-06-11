@@ -14,17 +14,18 @@ const CartAmountMeter = ({ productID, startAmount }) => {
 
     useUpdateEffect(() => {
         if (store.cartID) {
-            axios.post(`https://proseller.pro/api/basket/${productID}`, {
+            axios.post(`https://proseller.pro/api/basket`, {
             quantity: debouncedCount,
             _auth: store.initData,
             basket_id: store.cartID,
-            id: productID
+            product_id: productID
         })    
         }
 
         else {
-            axios.post(`https://proseller.pro/api/basket/${productID}`, {
+            axios.post(`https://proseller.pro/api/basket`, {
                 quantity: debouncedCount,
+                product_id: productID,
                 _auth: store.initData
             }).then((res) => {
                 store.cartID = res.data.basket_id;

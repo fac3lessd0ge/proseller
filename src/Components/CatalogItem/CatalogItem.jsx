@@ -15,12 +15,14 @@ const CatalogItem = ({ id, product, name, imgUrl, description, price = undefined
             setLinkTo(`/proseller/cats/${id}`)
         }
     }, [])
+
+    const URL = imgUrl.includes('media') ? "https://proseller.pro" + imgUrl.slice(12) : 'https://proseller.pro/media/' + imgUrl;
     
     return (
         <div className={`item-wrapper ${product ? '': 'm10'}`}>
             <div className="catalog__item">
                 <div className="catalog__avatar">
-                    <img src={"https://proseller.pro" + imgUrl.slice(12)} alt="product avatar" />
+                    <img src={URL} alt="product avatar" />
                 </div>
                 <div className="catalog__info">
                     <div className="catalog__name">

@@ -21,11 +21,6 @@ const Header = ({ title, back, withCart = true}) => {
                     </div>}
             </div>
             { title }
-
-            {withCart && 
-            <div className="header__cart">
-                <CartButton />
-            </div>}
             
         </header>
     );
