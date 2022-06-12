@@ -57,8 +57,8 @@ const CartLayout = () => {
             <Header title={'Cart'} back={true} withCart={false}/>
             <div className='catalog__container' style={{ paddingTop : 'calc(min(10vh, 95px))', height: 'calc(100vh - calc(min(10vh, 95px)))', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                 {empty && <div style={{fontSize: '30px', height: '100%', display: 'flex', flexDirection: 'column', placeItems: 'center', justifyContent: 'center', gap: '40px'}}>
-                    <>Ваша корзина пуста!</>
-                    <CartLink text={'Вернуться к покупкам'} back={true}/>
+                    <>Your cart is empty</>
+                    <CartLink text={'Back to store'} back={true}/>
                 </div>}
 
                 {!isLoading && <div style={{width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px'}}>

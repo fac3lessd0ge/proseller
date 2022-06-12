@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import React  from "react";
 
 export default function useUpdateEffect(callback, dependencies) {
-    const firstRender = useRef(true);
+    const firstRender = React.useRef(true);
 
     React.useEffect(() => {
         if (firstRender.current) {
