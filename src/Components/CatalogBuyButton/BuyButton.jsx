@@ -28,7 +28,7 @@ const BuyButton = ({ id, max = 10000, active = true }) => {
     }
 
     React.useEffect(() => {
-        if (count === max) {
+        if (count === max && count !== 0) {
             setBuyClass('buyBTN max');
             setMinusClass('minusBTN up');
         }

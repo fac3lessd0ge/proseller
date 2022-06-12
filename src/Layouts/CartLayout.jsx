@@ -62,7 +62,7 @@ const CartLayout = () => {
                 </div>}
 
                 {!isLoading && <div style={{width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px'}}>
-                    {serverData?.map((element, id) => {
+                    {serverData?.length !== 0 && serverData?.map((element, id) => {
                         console.log(element);
                         return <div style={{width: '95%', border: '2px solid grey', borderRadius: '10px', height: '60px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '18px'}}>
                             <div style={{marginLeft: '20px'}}>
@@ -75,8 +75,12 @@ const CartLayout = () => {
                                 <CartAmountMeter startAmount={element.quantity} productID={element.id} />
                             </div>
                         </div>
-                    })}    
+                    })}
                 </div>}
+                {!isLoading && serverData?.length === 0 && <div style={{fontSize: '30px', height: '100%', display: 'flex', flexDirection: 'column', placeItems: 'center', justifyContent: 'center', gap: '40px'}}>
+                    <>Your cart is empty</>
+                    <CartLink text={'Back to store'} back={true}/>
+                </div>}  
             </div>
         </>
     );

@@ -21,8 +21,9 @@ const Header = ({ title, back, withCart = true}) => {
                     </div>}
             </div>
             
+            { title }
 
-            <div className='header__homeLink'><Link to='/proseller/cats/0'>{ title }</Link> </div>
+            <div className='header__homeLink'><Link to='/proseller/cats/0'>{ 'Home' }</Link> </div>
             
         </header>
     );
