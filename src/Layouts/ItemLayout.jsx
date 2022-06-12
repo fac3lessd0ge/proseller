@@ -25,6 +25,7 @@ const ItemLayout = () => {
             })
             .catch((error) => {
             })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const onCheckboxChange = (e) => {

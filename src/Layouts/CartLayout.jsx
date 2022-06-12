@@ -3,37 +3,7 @@ import { InitDataContext } from '../InitDataProvider';
 import Header from '../Components/Header/Header';
 import axios from 'axios';
 import CartLink from '../Components/CartLink/CartLink';
-import CartButton from '../Components/CartButton/CartButtom';
 import CartAmountMeter from '../Components/CartAmountMeter/CartAmountMeter';
-
-const fakeServDat = {
-    products: [
-        {
-            name: 'napas',
-            quantity: 3,
-            id: 3,
-            price: 500
-        },
-        {
-            name: 'napas',
-            quantity: 3,
-            id: 3,
-            price: 500
-        },
-        {
-            name: 'napas',
-            quantity: 3,
-            id: 3,
-            price: 500
-        },
-        {
-            name: 'napas',
-            quantity: 3,
-            id: 3,
-            price: 500
-        }
-    ]
-}
 
 const CartLayout = () => {
     const store = useContext(InitDataContext);
@@ -50,6 +20,7 @@ const CartLayout = () => {
         } else {
             setEmpty(true);
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (

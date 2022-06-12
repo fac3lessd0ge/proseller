@@ -2,7 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import useDebounce from '../../Hooks/useDebounce';
 import useUpdateEffect from '../../Hooks/useUpdateEffect';
-import InitDataProvider, { InitDataContext } from '../../InitDataProvider';
+import { InitDataContext } from '../../InitDataProvider';
 
 import './BuyButton.css';
 
@@ -41,6 +41,7 @@ const BuyButton = ({ id, max = 10000, active = true }) => {
             setBuyClass('buyBTN buy');
             setMinusClass('minusBTN');
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [count])
 
     useUpdateEffect(() => {

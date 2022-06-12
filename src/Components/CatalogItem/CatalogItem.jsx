@@ -14,6 +14,7 @@ const CatalogItem = ({ id, product, name, imgUrl, description, price = undefined
         else if (!product) {
             setLinkTo(`/proseller/cats/${id}`)
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const URL = imgUrl.includes('media') ? "https://proseller.pro" + imgUrl.slice(12) : 'https://proseller.pro/media/' + imgUrl;
