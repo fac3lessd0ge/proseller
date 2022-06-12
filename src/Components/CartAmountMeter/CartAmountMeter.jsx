@@ -45,9 +45,9 @@ const CartAmountMeter = ({ productID, startAmount }) => {
 
     return (
         <div className="amount__container">
-            <button style={{fontSize: '20px', width: '30px', border: 'none', height: '30px', display: 'grid', placeItems: 'center', borderRadius: '50%'}} onClick={minusClickHandler}>-</button>
+            <button style={{fontSize: '20px', width: '30px', border: 'none', height: '30px', display: 'grid', placeItems: 'center', borderRadius: '4px'}} onClick={minusClickHandler}>-</button>
             {amount}
-            <button style={{fontSize: '20px', width: '30px', backgroundColor: '#2094bf', border: 'none', height: '30px', display: 'grid', placeItems: 'center', borderRadius: '50%'}} onClick={plusClickHandler}>+</button>
+            <button style={{fontSize: '20px', width: '30px', backgroundColor: '#2094bf', border: 'none', height: '30px', display: 'grid', placeItems: 'center', color: 'white', borderRadius: '4px'}} onClick={plusClickHandler}>+</button>
         </div>
 
     );

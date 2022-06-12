@@ -20,7 +20,9 @@ const Header = ({ title, back, withCart = true}) => {
                         <NavBackButton />
                     </div>}
             </div>
-            { title }
+            
+
+            <div className='header__homeLink'><Link to='/proseller/cats/0'>{ title }</Link> </div>
             
         </header>
     );

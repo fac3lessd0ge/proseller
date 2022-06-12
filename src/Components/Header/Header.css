@@ -22,3 +22,12 @@ header {
     position: absolute;
     right: 50px;
 }
+
+.header__homeLink {
+    background-color: #06a209;
+    left: 60px;
+    position: absolute;
+    border-radius: 4px;
+    padding: 0.2rem 0.4rem;
+    font-size: 20px;
+}
