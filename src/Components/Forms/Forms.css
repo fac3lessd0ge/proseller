@@ -22,12 +22,12 @@ p > label {
 
 .form {
     margin-bottom: 15px;
-    width: 95%;
+    width: 99%;
 }
 
 .form > p > input {
     margin: 5px 0px;
-    width: 100%;
+    width: 95%;
     height: 24px;
     font-size: 15px;
     outline: none;
@@ -35,7 +35,7 @@ p > label {
 }
 
 select {
-   width: 105%;
+   width: 100%;
    padding: 3px 5px;
    height: 34px;
 }

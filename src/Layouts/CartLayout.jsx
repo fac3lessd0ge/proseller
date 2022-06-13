@@ -4,6 +4,7 @@ import Header from '../Components/Header/Header';
 import axios from 'axios';
 import CartLink from '../Components/CartLink/CartLink';
 import CartAmountMeter from '../Components/CartAmountMeter/CartAmountMeter';
+import Forms from '../Components/Forms/Forms';
 
 const CartLayout = () => {
     const store = useContext(InitDataContext);
@@ -47,15 +48,13 @@ const CartLayout = () => {
                             </div>
                         </div>
                     })}
+                    <Forms />
                 </div>}
                 {!isLoading && serverData?.length === 0 && <div style={{fontSize: '30px', height: '100%', display: 'flex', flexDirection: 'column', placeItems: 'center', justifyContent: 'center', gap: '40px'}}>
                     <>Your cart is empty</>
                     <CartLink text={'Back to store'} to='/proseller/cats/0'/>
                 </div>}  
             </div>
-            {!isLoading && serverData?.length !== 0 && <div className="link-container" style={{position: 'fixed', bottom: '10px', width: '100%', display: 'grid', placeItems: 'center', zIndex: '100'}}>
-                    <CartLink text={'Order'} to={'/proseller/order'}/>
-            </div>}
         </>
     );
 }
