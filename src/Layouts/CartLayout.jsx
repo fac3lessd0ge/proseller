@@ -38,17 +38,17 @@ const CartLayout = () => {
                         console.log(element);
                         return <div style={{width: '95%', border: '2px solid grey', borderRadius: '10px', height: '60px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '18px'}}>
                             <div style={{marginLeft: '20px'}}>
-                                {element.name}
+                                {element.name?.length > 18 ? element.name.substring(0, 18) + '...' : element.name}
                             </div>
                             
                             <div className="catalog__price" style={{margin: '0'}}>{element.price}</div>
 
                             <div style={{marginRight: '20px'}}>
-                                <CartAmountMeter startAmount={element.quantity} productID={element.id} />
+                                <CartAmountMeter startAmount={element.quantity} productID={element.id} max={element.max_quantity === -1 ? 99999 : element.max_quantity}/>
                             </div>
                         </div>
                     })}
-                    <Forms />
+                    {serverData?.length !== 0 && <Forms />}
                 </div>}
                 {!isLoading && serverData?.length === 0 && <div style={{fontSize: '30px', height: '100%', display: 'flex', flexDirection: 'column', placeItems: 'center', justifyContent: 'center', gap: '40px'}}>
                     <>Your cart is empty</>

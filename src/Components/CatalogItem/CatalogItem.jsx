@@ -27,7 +27,7 @@ const CatalogItem = ({ id, product, name, imgUrl, description, price = undefined
                 </div>
                 <div className="catalog__info">
                     <div className="catalog__name">
-                    {linkTo ? <Link to = {linkTo}>{name}</Link> : <>{name}</>}
+                    {linkTo ? <Link to = {linkTo}>{name?.length > 20 ? name.substring(0, 20) + '...' : name}</Link> : <>{name}</>}
                     </div>
                     <div className="catalog__description">
                         {description?.length > 40 ?  description.substring(0, 40) + '...' : description}

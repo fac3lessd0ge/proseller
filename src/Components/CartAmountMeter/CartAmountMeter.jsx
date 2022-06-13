@@ -5,7 +5,7 @@ import axios from 'axios';
 import { InitDataContext } from '../../InitDataProvider';
 import './CartAmountMeter.css';
 
-const CartAmountMeter = ({ productID, startAmount }) => {
+const CartAmountMeter = ({ productID, startAmount, max=99999 }) => {
     const [amount, setAmount] = React.useState(startAmount)
 
     const store = React.useContext(InitDataContext);
@@ -40,14 +40,16 @@ const CartAmountMeter = ({ productID, startAmount }) => {
     }
 
     const plusClickHandler = () => {
-        setAmount(() => amount + 1)
+        if (amount < max) {
+            setAmount(() => amount + 1)
+        }
     }
 
     return (
         <div className="amount__container">
             <button style={{fontSize: '20px', width: '30px', border: 'none', height: '30px', display: 'grid', placeItems: 'center', borderRadius: '4px'}} onClick={minusClickHandler}>-</button>
             {amount}
-            <button style={{fontSize: '20px', width: '30px', backgroundColor: '#2094bf', border: 'none', height: '30px', display: 'grid', placeItems: 'center', color: 'white', borderRadius: '4px'}} onClick={plusClickHandler}>+</button>
+            <button className={amount === max ? 'stop' : ''} style={{fontSize: '20px', width: '30px', backgroundColor: '#2094bf', border: 'none', height: '30px', display: 'grid', placeItems: 'center', color: 'white', borderRadius: '4px'}} onClick={plusClickHandler}>{amount === max ?  '\u00D7' : '+'}</button>
         </div>
 
     );

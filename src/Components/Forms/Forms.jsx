@@ -22,7 +22,7 @@ const Forms = () => {
 
 
     return (
-        <div style={{width: '100%', display: 'grid', placeItems: 'center'}}>
+        <div style={{width: '100%', display: 'grid', placeItems: 'center', paddingBottom: '70px'}}>
             <Formik
                 initialValues={{
                     name: '',

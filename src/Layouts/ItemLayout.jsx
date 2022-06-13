@@ -44,7 +44,7 @@ const ItemLayout = () => {
                         {"I'm familiarized with this product"}
                     </div>
                     <div className="btn-container" style={{width: '95%', marginLeft: '2.5%', height: '38px', marginBottom: '5%'}}>
-                        <BuyButton active={active} id={id} max={serverData.quantity === -1 ? 99999 : serverData.quantity}/>
+                        <BuyButton active={active} id={Number(id)} max={serverData.quantity === -1 ? 99999 : serverData.quantity}/>
                     </div>
                     <div className="link-container" style={{position: 'fixed', marginLeft: '1px', bottom: '10px', width: '100%', display: 'grid', placeItems: 'center'}}>
                         <CartLink text={'To cart'} to='/proseller/cart'/>

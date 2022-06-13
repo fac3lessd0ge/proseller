@@ -26,7 +26,8 @@ header {
 .header__homeLink {
     background-color: #1d1f22;
     border: 1.2px solid grey;
-
+    position: absolute;
+    right: 50px;
     border-radius: 4px;
     padding: 0.2rem 0.4rem;
     font-size: 20px;
