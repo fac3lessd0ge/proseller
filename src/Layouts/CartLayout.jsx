@@ -29,7 +29,7 @@ const CartLayout = () => {
             <div className='catalog__container' style={{ paddingTop : 'calc(min(10vh, 95px))', height: 'calc(100vh - calc(min(10vh, 95px)))', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                 {empty && <div style={{fontSize: '30px', height: '100%', display: 'flex', flexDirection: 'column', placeItems: 'center', justifyContent: 'center', gap: '40px'}}>
                     <>Your cart is empty</>
-                    <CartLink text={'Back to store'} back={true}/>
+                    <CartLink text={'Back to store'} to='/proseller/cats/0'/>
                 </div>}
 
                 {!isLoading && <div style={{width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px'}}>
@@ -50,9 +50,12 @@ const CartLayout = () => {
                 </div>}
                 {!isLoading && serverData?.length === 0 && <div style={{fontSize: '30px', height: '100%', display: 'flex', flexDirection: 'column', placeItems: 'center', justifyContent: 'center', gap: '40px'}}>
                     <>Your cart is empty</>
-                    <CartLink text={'Back to store'} back={true}/>
+                    <CartLink text={'Back to store'} to='/proseller/cats/0'/>
                 </div>}  
             </div>
+            {!isLoading && serverData?.length !== 0 && <div className="link-container" style={{position: 'fixed', bottom: '10px', width: '100%', display: 'grid', placeItems: 'center', zIndex: '100'}}>
+                    <CartLink text={'Order'} to={'/proseller/order'}/>
+            </div>}
         </>
     );
 }

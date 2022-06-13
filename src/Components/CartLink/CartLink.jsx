@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import './CartLink.css';
 
 
-const CartLink = ({ text, back = false }) => {
+const CartLink = ({ text, to }) => {
     return (
-            <div className='cart__link' role={'button'}> <Link style={{width: '100%'}} to={back ? '/proseller/cats/0' : '/proseller/cart'}> <div style={{width: '100%', display: 'grid', placeItems: 'center'}}>{text}</div> </Link> </div>
+            <div className='cart__link' role={'button'}> <Link style={{width: '100%'}} to={to}> <div style={{width: '100%', display: 'grid', placeItems: 'center'}}>{text}</div> </Link> </div>
     );
 }
  

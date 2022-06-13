@@ -1,0 +1,60 @@
+p > label::before {
+    content: '* ';
+    font-size: 10px;
+    transform: translateY(-10px);
+    color: red;
+}
+
+p > label {
+    font-size: 15px;
+}
+
+.error {
+    color: #e93d3d;
+    font-size: 12px;
+    text-align: center;
+    width: 100%;
+}
+
+.form-field {
+    width: 95%;
+}
+
+.form {
+    margin-bottom: 15px;
+    width: 95%;
+}
+
+.form > p > input {
+    margin: 5px 0px;
+    width: 100%;
+    height: 24px;
+    font-size: 15px;
+    outline: none;
+    padding: 3px 5px;
+}
+
+select {
+   width: 105%;
+   padding: 3px 5px;
+   height: 34px;
+}
+
+.subBtn {
+    width: 95%;
+    border: none;
+    border-radius: 4px;
+    font-weight: 700;
+    height: 35px;
+    background-color: #06a209;
+    color: white;
+    font-size: 22px;
+    position: absolute;
+    bottom: 30px;
+
+}
+
+.subBtn:active {
+    background-color: #09780b;
+    transition: 0.1s;
+}
