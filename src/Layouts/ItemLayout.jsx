@@ -31,11 +31,11 @@ const ItemLayout = () => {
 
     return (
         <>
-            <Header title={serverData ? serverData.name : 'Loading...'} back={true} />
+            <Header title={serverData ? serverData.name?.length > 18 ? serverData.name.substring(0, 18) + '...' : serverData.name : 'Loading...'} back={true} />
             {serverData && 
                 <div className='catalog__container' style={{ paddingTop : 'calc(min(3vh, 95px))', paddingBottom: '50px' }}>
                     <PhotoCarousel imgArr={serverData?.images} />
-                    <div style={{width: '100%', display: 'grid', placeItems: 'center', fontSize: '30px'}}>{serverData.name}</div>
+                    <div style={{width: '80%', display: 'grid', placeItems: 'center', fontSize: '30px', padding: '0 10%'}}>{serverData.name}</div>
                     <div style={{ padding: '0 12px',  display: 'grid', placeItems: 'center', marginTop: '20px'}}>{serverData.description}</div>
                     <div style={{width: '100%', display: 'grid', placeItems: 'center', marginTop: '10px'}}>Max amount: {serverData.quantity === -1 ? 'unlimited' : serverData.quantity}  <div className='catalog__price'>{serverData.price}</div></div>
                     <div className="familize" style={{width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '15px'}}>

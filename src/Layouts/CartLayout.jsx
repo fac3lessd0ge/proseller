@@ -41,7 +41,7 @@ const CartLayout = () => {
                                 {element.name?.length > 18 ? element.name.substring(0, 18) + '...' : element.name}
                             </div>
                             
-                            <div className="catalog__price" style={{margin: '0'}}>{element.price}</div>
+                            <div className="catalog__price" style={{margin: '0', minWidth: '90px'}}>{element.price}</div>
 
                             <div style={{marginRight: '20px'}}>
                                 <CartAmountMeter startAmount={element.quantity} productID={element.id} max={element.max_quantity === -1 ? 99999 : element.max_quantity}/>
