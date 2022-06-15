@@ -17,10 +17,8 @@ const CatalogLayout = ({ headerTitle, type }) => {
      
     React.useEffect(() => {
         axios.get(`https://proseller.pro/api/category/${id}`).then((res) => {
-            console.log(res.data.results);
             setServerData(res.data.results)
-        }).then((res) => {setIsLoading(false);});
-        console.log(store);
+        }).then((res) => setIsLoading(false));
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [id])
     

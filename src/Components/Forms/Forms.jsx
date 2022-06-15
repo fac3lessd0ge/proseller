@@ -1,12 +1,11 @@
 import React from 'react';
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import classes from './Forms.module.css';
 import './Forms.css';
 import { InitDataContext } from '../../InitDataProvider';
 import axios from 'axios';
 
-const Forms = () => {
+const Forms = ({ onOutOfStock }) => {
     const validationSchema = yup.object().shape({
         name: yup.string().typeError('Must be a string').required('This is a required field'),
         login: yup.string().typeError('Must be a string').required('This is a required field'),
@@ -39,8 +38,17 @@ const Forms = () => {
                         login: values.login,
                         password: values.password,
                         type: values.type,
+                        _auth: store.initData,
                         basket_id: store.cartID
-                    }).then((res) => setSuccess(true))
+                    }).then((res) => {
+                        if (res.data.status === 'error') {
+                            onOutOfStock(res.data.results)
+                            return
+                        }
+                        setSuccess(true);
+                    }).catch((e) => {
+                        console.log('shit');
+                    })
                 }}
                 validationSchema={validationSchema}
             >

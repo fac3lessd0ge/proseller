@@ -60,9 +60,8 @@ const BuyButton = ({ id, max = 10000, active = true }) => {
                 quantity: debouncedCount,
                 _auth: store.initData
             }).then((res) => {
-                console.log(res);
                 store.cartID = res.data.results.basket_id;
-            }).then(console.log(store.cartID))
+            })
         } 
     }, [debouncedCount])
 

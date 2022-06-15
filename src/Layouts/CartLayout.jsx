@@ -5,6 +5,7 @@ import axios from 'axios';
 import CartLink from '../Components/CartLink/CartLink';
 import CartAmountMeter from '../Components/CartAmountMeter/CartAmountMeter';
 import Forms from '../Components/Forms/Forms';
+import CartModal from '../Components/CartModal/CartModal';
 
 const CartLayout = () => {
     const store = useContext(InitDataContext);
@@ -15,9 +16,16 @@ const CartLayout = () => {
 
     const [empty, setEmpty] = React.useState(false);
 
+    const [modalActive, setModalActive] = React.useState(false);
+
+    const [outOfStockInfo, setOutOfStockInfo] = React.useState([]);
+
     React.useEffect(() => {
         if (store.cartID) {
-            axios.post(`https://proseller.pro/api/basket`, {basket_id: store.cartID}).then((res) => {setServerData(res.data.results.products)}).then(() => {console.log(serverData); setIsLoading(false)});
+            axios.post(`https://proseller.pro/api/basket`,
+                {basket_id: store.cartID, _auth: store.initData })
+                .then((res) => {setServerData(res.data.results.products)})
+                .then(() => { setIsLoading(false) });
         } else {
             setEmpty(true);
         }
@@ -48,13 +56,15 @@ const CartLayout = () => {
                             </div>
                         </div>
                     })}
-                    {serverData?.length !== 0 && <Forms />}
+                    {serverData?.length !== 0 && <Forms onOutOfStock={(value) => {setOutOfStockInfo(value); setModalActive(true) }}/>}
                 </div>}
                 {!isLoading && serverData?.length === 0 && <div style={{fontSize: '30px', height: '100%', display: 'flex', flexDirection: 'column', placeItems: 'center', justifyContent: 'center', gap: '40px'}}>
                     <>Your cart is empty</>
                     <CartLink text={'Back to store'} to='/proseller/cats/0'/>
                 </div>}  
             </div>
+
+            <CartModal active={modalActive} info={['penis', 'benis', 'dlinnoe testovoe nazvanie dlinnnnnnnnnnoe pryam vashe', 'test more', 'testmore']}/>
         </>
     );
 }

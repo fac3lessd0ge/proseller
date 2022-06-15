@@ -10,6 +10,10 @@
     z-index: 100;
 }
 
+.cart__link > a, .cart__link > a > div {
+    height: 100%;
+}
+
 .cart__link:active {
     background-color: #09780b;
     transition: 0.1s;
