@@ -21,6 +21,17 @@ const CatalogLayout = ({ headerTitle, type }) => {
         }).then((res) => setIsLoading(false));
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [id])
+
+    React.useEffect(() => {
+        if (!store.cartID) {
+            axios.post('https://proseller.pro/api/basket/', {
+                _auth: store.initialData
+            }).then((res) => {
+                store.cartID = res.data?.results?.basket_id
+            })
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
     
     return (
         <>
@@ -94,6 +105,7 @@ const CatalogLayout = ({ headerTitle, type }) => {
                         price={element.price}
                         fastbuy={element.fast_buy}
                         id={element.id}
+                        max={element.quantity}
                         />} 
                     </>
                     }

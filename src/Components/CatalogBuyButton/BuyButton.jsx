@@ -46,7 +46,7 @@ const BuyButton = ({ id, max = 10000, active = true }) => {
 
     useUpdateEffect(() => {
         if (store.cartID) {
-            axios.post(`https://proseller.pro/api/basket`, {
+            axios.post(`https://proseller.pro/api/basket/`, {
             product_id: id,
             quantity: debouncedCount,
             _auth: store.initData,
@@ -60,7 +60,7 @@ const BuyButton = ({ id, max = 10000, active = true }) => {
                 quantity: debouncedCount,
                 _auth: store.initData
             }).then((res) => {
-                store.cartID = res.data.results.basket_id;
+                store.cartID = res.data?.results?.basket_id;
             })
         } 
     }, [debouncedCount])

@@ -4,7 +4,7 @@ import BuyButton from '../CatalogBuyButton/BuyButton';
 
 import './CatalogItem.css';
 
-const CatalogItem = ({ id, product, name, imgUrl, description, price = undefined, fastbuy = true }) => {
+const CatalogItem = ({ id, product, name, imgUrl, description, price = undefined, fastbuy = true, max }) => {
     const [linkTo, setLinkTo] = React.useState('');
 
     React.useEffect(() => {
@@ -17,7 +17,7 @@ const CatalogItem = ({ id, product, name, imgUrl, description, price = undefined
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    const URL = imgUrl.includes('media') ? "https://proseller.pro" + imgUrl.slice(12) : 'https://proseller.pro/media/' + imgUrl;
+    const URL = imgUrl.includes('media') ? "https://proseller.pro/django" + imgUrl.slice(12) : 'https://proseller.pro/django/media/' + imgUrl;
     
     return (
         <div className={`item-wrapper ${product ? '': 'm10'}`}>
@@ -39,7 +39,7 @@ const CatalogItem = ({ id, product, name, imgUrl, description, price = undefined
                     }
                 </div>
             </div>
-            {product && fastbuy && <BuyButton id = {id}/>}
+            {product && fastbuy && <BuyButton max={max} id = {id}/>}
             {product && !fastbuy && <Link to = {`/proseller/item/${id}`}><BuyButton /></Link>}
         </div>
     );

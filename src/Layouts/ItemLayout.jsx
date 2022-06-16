@@ -17,6 +17,9 @@ const ItemLayout = () => {
         axios.get(`https://proseller.pro/api/product/${id}`)
             .then((res) => {
                 setServerData(res.data.results);
+                if (!res.data.results.familiarization) {
+                    setActive(true);
+                }
             })
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -38,11 +41,11 @@ const ItemLayout = () => {
                     <div style={{width: '80%', display: 'grid', placeItems: 'center', fontSize: '30px', padding: '0 10%'}}>{serverData.name}</div>
                     <div style={{ padding: '0 12px',  display: 'grid', placeItems: 'center', marginTop: '20px'}}>{serverData.description}</div>
                     <div style={{width: '100%', display: 'grid', placeItems: 'center', marginTop: '10px'}}>Max amount: {serverData.quantity === -1 ? 'unlimited' : serverData.quantity}  <div className='catalog__price'>{serverData.price}</div></div>
-                    <div className="familize" style={{width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '15px'}}>
+                    {serverData?.familiarization && <div className="familize" style={{width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '15px'}}>
                         
                         <input onChange={onCheckboxChange} type={'checkbox'} />
                         {"I'm familiarized with this product"}
-                    </div>
+                    </div>}
                     <div className="btn-container" style={{width: '95%', marginLeft: '2.5%', height: '38px', marginBottom: '5%'}}>
                         <BuyButton active={active} id={Number(id)} max={serverData.quantity === -1 ? 99999 : serverData.quantity}/>
                     </div>

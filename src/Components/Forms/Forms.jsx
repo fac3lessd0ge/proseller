@@ -32,7 +32,7 @@ const Forms = ({ onOutOfStock }) => {
                 }}
                 validateOnBlur
                 onSubmit={(values) => {
-                    axios.post('https://proseller.pro/api/cart', {
+                    axios.post('https://proseller.pro/api/cart/', {
                         name: values.name,
                         email: values.email,
                         login: values.login,

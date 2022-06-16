@@ -14,7 +14,7 @@ const CartAmountMeter = ({ productID, startAmount, max=99999 }) => {
 
     useUpdateEffect(() => {
         if (store.cartID) {
-            axios.post(`https://proseller.pro/api/basket`, {
+            axios.post(`https://proseller.pro/api/basket/`, {
             quantity: debouncedCount,
             _auth: store.initData,
             basket_id: store.cartID,
@@ -23,7 +23,7 @@ const CartAmountMeter = ({ productID, startAmount, max=99999 }) => {
         }
 
         else {
-            axios.post(`https://proseller.pro/api/basket`, {
+            axios.post(`https://proseller.pro/api/basket/`, {
                 quantity: debouncedCount,
                 product_id: productID,
                 _auth: store.initData

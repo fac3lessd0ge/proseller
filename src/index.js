@@ -6,6 +6,7 @@ import InitDataProvider from './InitDataProvider';
 import CartLayout from './Layouts/CartLayout';
 import CatalogLayout from './Layouts/CatalogLayout';
 import ItemLayout from './Layouts/ItemLayout';
+import ReloadDummyRoute from './Layouts/ReloadDummyRoute';
 
 /*global Telegram*/
 const initData = Telegram.WebApp.initData;
@@ -19,6 +20,7 @@ root.render(
 				<Route path='/proseller/cats/:id' element={<CatalogLayout type={'test_categories'} headerTitle={'Categories'}/>}/>
 				<Route path='/proseller/item/:id' element={<ItemLayout />}/>
 				<Route path='/proseller/cart' element={<CartLayout />} />
+				<Route path='/proseller/reload' element={<ReloadDummyRoute />} />
 			</Routes>
 		</BrowserRouter>
 	</InitDataProvider>

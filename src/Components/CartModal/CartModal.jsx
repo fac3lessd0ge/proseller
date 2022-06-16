@@ -1,10 +1,14 @@
 import React from 'react';
+import { useNavigate } from "react-router-dom";
 import { ReactComponent as OutStockSVG } from '../../Assets/outOfStock.svg';
 
 import './CartModal.css';
 
 const CartModal = ({ active, info}) => {
+    // eslint-disable-next-line
     const [andMore, setAndMore] = React.useState((info && info?.length > 4) ? true : false)
+
+    const navigate = useNavigate();
 
     return (
         active && <div className="modal">
@@ -20,7 +24,7 @@ const CartModal = ({ active, info}) => {
 
                 {andMore && <div className='modal__item'>and some others...</div>}
 
-                <button onClick={() => window.location.reload()} className='modal__submit'> Okay, reload cart </button>
+                <button onClick={() => navigate(0)} className='modal__submit'> Okay, reload cart </button>
             </div>
         </div>
     );

@@ -18,11 +18,12 @@ const CartLayout = () => {
 
     const [modalActive, setModalActive] = React.useState(false);
 
+    // eslint-disable-next-line
     const [outOfStockInfo, setOutOfStockInfo] = React.useState([]);
 
     React.useEffect(() => {
         if (store.cartID) {
-            axios.post(`https://proseller.pro/api/basket`,
+            axios.post(`https://proseller.pro/api/basket/`,
                 {basket_id: store.cartID, _auth: store.initData })
                 .then((res) => {setServerData(res.data.results.products)})
                 .then(() => { setIsLoading(false) });
@@ -64,7 +65,7 @@ const CartLayout = () => {
                 </div>}  
             </div>
 
-            <CartModal active={modalActive} info={['penis', 'benis', 'dlinnoe testovoe nazvanie dlinnnnnnnnnnoe pryam vashe', 'test more', 'testmore']}/>
+            <CartModal active={modalActive} info={outOfStockInfo}/>
         </>
     );
 }
