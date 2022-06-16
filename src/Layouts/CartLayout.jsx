@@ -5,7 +5,6 @@ import axios from 'axios';
 import CartLink from '../Components/CartLink/CartLink';
 import CartAmountMeter from '../Components/CartAmountMeter/CartAmountMeter';
 import Forms from '../Components/Forms/Forms';
-import CartModal from '../Components/CartModal/CartModal';
 
 const CartLayout = () => {
     const store = useContext(InitDataContext);

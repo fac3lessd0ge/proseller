@@ -1,7 +1,6 @@
 // Господь прости меня за этот ужасный костыль
 
 import React from 'react';
-import { Navigate } from 'react-router-dom';
 import CartModal from '../Components/CartModal/CartModal';
 import { InitDataContext } from '../InitDataProvider';
 
