@@ -44,7 +44,7 @@ const Forms = ({ onSuccess, onOutOfStock }) => {
                         basket_id: store.cartID
                     }).then((res) => {
                         if (res.data.status === 'error') {
-                            store.onOutOfStock = res.data.results;
+                            store.outOfStock = res.data.results;
                             navigate('/proseller/reload', { replace: true });
                             return
                         }
