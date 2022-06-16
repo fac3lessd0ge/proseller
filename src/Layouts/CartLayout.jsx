@@ -16,10 +16,13 @@ const CartLayout = () => {
 
     const [empty, setEmpty] = React.useState(false);
 
-    const [modalActive, setModalActive] = React.useState(false);
-
     // eslint-disable-next-line
     const [outOfStockInfo, setOutOfStockInfo] = React.useState([]);
+
+
+    const clearServerData = () => {
+        setServerData([]);
+    }
 
     React.useEffect(() => {
         if (store.cartID) {
@@ -57,15 +60,13 @@ const CartLayout = () => {
                             </div>
                         </div>
                     })}
-                    {serverData?.length !== 0 && <Forms onOutOfStock={(value) => {setOutOfStockInfo(value); setModalActive(true) }}/>}
+                    {serverData?.length !== 0 && <Forms onSuccess={clearServerData} />}
                 </div>}
                 {!isLoading && serverData?.length === 0 && <div style={{fontSize: '30px', height: '100%', display: 'flex', flexDirection: 'column', placeItems: 'center', justifyContent: 'center', gap: '40px'}}>
                     <>Your cart is empty</>
                     <CartLink text={'Back to store'} to='/proseller/cats/0'/>
                 </div>}  
             </div>
-
-            <CartModal active={modalActive} info={outOfStockInfo}/>
         </>
     );
 }

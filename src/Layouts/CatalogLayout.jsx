@@ -24,11 +24,12 @@ const CatalogLayout = ({ headerTitle, type }) => {
 
     React.useEffect(() => {
         if (!store.cartID) {
+            console.log('делаю запрос айдишника!');
             axios.post('https://proseller.pro/api/basket/', {
-                _auth: store.initialData
+                _auth: store.initData
             }).then((res) => {
                 store.cartID = res.data?.results?.basket_id
-            })
+            }).catch((e) => console.log('не получилось, не фортануло'))
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])

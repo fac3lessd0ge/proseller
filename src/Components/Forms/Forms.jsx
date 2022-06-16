@@ -4,8 +4,9 @@ import * as yup from 'yup';
 import './Forms.css';
 import { InitDataContext } from '../../InitDataProvider';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
-const Forms = ({ onOutOfStock }) => {
+const Forms = ({ onSuccess, onOutOfStock }) => {
     const validationSchema = yup.object().shape({
         name: yup.string().typeError('Must be a string').required('This is a required field'),
         login: yup.string().typeError('Must be a string').required('This is a required field'),
@@ -14,6 +15,7 @@ const Forms = ({ onOutOfStock }) => {
         email: yup.string().email('Please type a correct Email').required('This is a required field')
     })
 
+    const navigate = useNavigate();
 
     const store = React.useContext(InitDataContext);
 
@@ -42,12 +44,14 @@ const Forms = ({ onOutOfStock }) => {
                         basket_id: store.cartID
                     }).then((res) => {
                         if (res.data.status === 'error') {
-                            onOutOfStock(res.data.results)
+                            store.onOutOfStock = res.data.results;
+                            navigate('/proseller/reload', { replace: true });
                             return
                         }
                         setSuccess(true);
+                        onSuccess();
                     }).catch((e) => {
-                        console.log('shit');
+                        console.log('oopsie');
                     })
                 }}
                 validationSchema={validationSchema}
