@@ -24,6 +24,7 @@ const Forms = ({ onSuccess, onOutOfStock }) => {
 
     return (
         <div style={{width: '100%', display: 'grid', placeItems: 'center', paddingBottom: '70px'}}>
+            
             <Formik
                 initialValues={{
                     name: '',
@@ -45,13 +46,12 @@ const Forms = ({ onSuccess, onOutOfStock }) => {
                     }).then((res) => {
                         if (res.data.status === 'error') {
                             store.outOfStock = res.data.results;
-                            navigate('/proseller/reload', { replace: true });
                             return
+                            
                         }
-                        setSuccess(true);
-                        onSuccess();
-                    }).catch((e) => {
-                        console.log('oopsie');
+                        store.success = true;
+                    }).then(() => {
+                        navigate('/proseller/reload', { replace: true });
                     })
                 }}
                 validationSchema={validationSchema}
