@@ -45,9 +45,8 @@ const Forms = ({ onSuccess, onOutOfStock }) => {
                         basket_id: store.cartID
                     }).then((res) => {
                         if (res.data.status === 'error') {
-                            store.outOfStock = res.data.results;
-                            return
-                            
+                            store.outOfStock = [...res.data.results];
+                            return 
                         }
                         store.success = true;
                     }).then(() => {
