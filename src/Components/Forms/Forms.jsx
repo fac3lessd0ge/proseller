@@ -3,6 +3,7 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 import './Forms.css';
 import { InitDataContext } from '../../InitDataProvider';
+import { OutOfStockContext } from '../../OutOfStockProvider';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -19,7 +20,7 @@ const Forms = ({ onSuccess, onOutOfStock }) => {
 
     const store = React.useContext(InitDataContext);
 
-    const [success, setSuccess] = React.useState(false);
+    const stock = React.useContext(OutOfStockContext);
 
 
     return (
@@ -45,7 +46,8 @@ const Forms = ({ onSuccess, onOutOfStock }) => {
                         basket_id: store.cartID
                     }).then((res) => {
                         if (res.data.status === 'error') {
-                            store.outOfStock = [...res.data.results];
+                            console.log(stock);
+                            stock.setOutOfStock(...res.data.results);
                             return 
                         }
                         store.success = true;
@@ -143,8 +145,6 @@ const Forms = ({ onSuccess, onOutOfStock }) => {
                     </div>
                 }
             </Formik>
-
-            {success ? <>Operation sucess!</> : <></>}
         </div>
     );
 }
