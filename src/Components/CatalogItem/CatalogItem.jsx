@@ -8,12 +8,11 @@ const CatalogItem = ({ id, product, name, imgUrl, description, price = undefined
     const [linkTo, setLinkTo] = React.useState('');
 
     React.useEffect(() => {
-        if (product && !fastbuy) { 
+        if (product) { 
             setLinkTo(`/proseller/item/${id}`);
+            return
         }
-        else if (!product) {
-            setLinkTo(`/proseller/cats/${id}`)
-        }
+        setLinkTo(`/proseller/cats/${id}`)
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 

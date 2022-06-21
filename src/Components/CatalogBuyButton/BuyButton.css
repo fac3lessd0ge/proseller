@@ -21,7 +21,7 @@
 }
 
 .buy > span:before {
-    content: 'Buy';
+    content: 'Add to cart';
 }
 
 .buy {
