@@ -22,7 +22,7 @@ const Header = ({ title, back, withCart = true}) => {
             
             { title }
 
-            <div className='header__homeLink'><Link to='/proseller/cats/0'>{ 'Home' }</Link> </div>
+            <div className='header__homeLink clickable'><Link to='/proseller/cats/0'>{ 'Home' }</Link> </div>
             
         </header>
     );

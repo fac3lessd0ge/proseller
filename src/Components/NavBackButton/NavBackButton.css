@@ -1,0 +1,33 @@
+.clickable:active {
+    animation: slide-bottom 0.15s linear;
+    -webkit-animation: slide-bottom 0.15s linear;
+}
+
+@-webkit-keyframes slide-bottom {
+    0% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+    50% {
+        -webkit-transform: translateY(3px);
+        transform: translateY(3px);
+    }
+    5% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+  }
+  @keyframes slide-bottom {
+    0% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+    50% {
+        -webkit-transform: translateY(3px);
+        transform: translateY(3px);
+    }
+    5% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+  }

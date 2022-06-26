@@ -24,12 +24,11 @@ const CatalogLayout = ({ headerTitle, type }) => {
 
     React.useEffect(() => {
         if (!store.cartID) {
-            console.log('делаю запрос айдишника!');
             axios.post('https://proseller.pro/api/basket/', {
                 _auth: store.initData
             }).then((res) => {
                 store.cartID = res.data?.results?.basket_id
-            }).catch((e) => console.log('не получилось, не фортануло'))
+            })
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -122,7 +121,7 @@ const CatalogLayout = ({ headerTitle, type }) => {
                         product={false}
                     />
                 )} */}
-                <div className="link-container" style={{position: 'fixed', bottom: '10px', width: '100%', display: 'grid', placeItems: 'center', zIndex: '100'}}>
+                <div className="link-container clickable" style={{position: 'fixed', bottom: '10px', width: '100%', display: 'grid', placeItems: 'center', zIndex: '100'}}>
                     <CartLink text={'To Cart'} to='/proseller/cart' />
                 </div>
             </div>

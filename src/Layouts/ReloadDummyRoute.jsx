@@ -14,8 +14,6 @@ const ReloadDummyRoute = () => {
 
     const store = React.useContext(InitDataContext);
 
-    console.log(outOfStock);
-
     return (
         <>
             { outOfStock && 
@@ -29,7 +27,7 @@ const ReloadDummyRoute = () => {
                         <div className="modal__title" style={{width: '100%', textAlign: 'center', marginTop: '20px', fontSize: '17px'}}>
                             Operation success!
                         </div>
-                        <button onClick={() => navigate('/proseller/cart', { replace: true })} className='modal__submit'> Okay, reload cart </button>
+                        <button onClick={() => navigate('/proseller/cart', { replace: true })} className='modal__submit clickable'> Okay, reload cart </button>
                     </div>
                 </div>
             }

@@ -46,7 +46,6 @@ const CartLayout = () => {
 
                 {!isLoading && <div style={{width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px'}}>
                     {serverData?.length !== 0 && serverData?.map((element, id) => {
-                        console.log(element);
                         return <div style={{width: '95%', border: '2px solid grey', borderRadius: '10px', height: '60px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '18px'}}>
                             <div style={{marginLeft: '20px'}}>
                                 {element.name?.length > 18 ? element.name.substring(0, 18) + '...' : element.name}

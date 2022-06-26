@@ -1,11 +1,11 @@
 import React from 'react';
-import { Formik } from 'formik';
 import * as yup from 'yup';
-import './Forms.css';
+import axios from 'axios';
+import { Formik } from 'formik';
+import { useNavigate } from 'react-router-dom';
 import { InitDataContext } from '../../InitDataProvider';
 import { OutOfStockContext } from '../../OutOfStockProvider';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import './Forms.css';
 
 const Forms = ({ onSuccess, onOutOfStock }) => {
     const validationSchema = yup.object().shape({
@@ -46,7 +46,6 @@ const Forms = ({ onSuccess, onOutOfStock }) => {
                         basket_id: store.cartID
                     }).then((res) => {
                         if (res.data.status === 'error') {
-                            console.log(stock);
                             stock.setOutOfStock(...res.data.results);
                             return 
                         }

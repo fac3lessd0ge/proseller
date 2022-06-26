@@ -5,7 +5,7 @@ import './CartLink.css';
 
 const CartLink = ({ text, to }) => {
     return (
-            <div className='cart__link' role={'button'}> <Link style={{width: '100%'}} to={to}> <div style={{width: '100%', display: 'grid', placeItems: 'center'}}>{text}</div> </Link> </div>
+            <div className='cart__link clickable' role={'button'}> <Link style={{width: '100%'}} to={to}> <div style={{width: '100%', display: 'grid', placeItems: 'center'}}>{text}</div> </Link> </div>
     );
 }
  

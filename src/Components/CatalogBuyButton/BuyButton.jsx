@@ -11,8 +11,6 @@ const BuyButton = ({ id, max = 10000, active = true }) => {
     const [buyClass, setBuyClass] = React.useState('buyBTN buy');
     const [minusClass, setMinusClass] = React.useState('minusBTN');
 
-    console.log('rerender!');
-
     const debouncedCount = useDebounce(count, 400);
 
     const store = React.useContext(InitDataContext);
