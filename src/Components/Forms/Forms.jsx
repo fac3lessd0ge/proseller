@@ -18,6 +18,12 @@ const Forms = ({ initialValues }) => {
 
     const navigate = useNavigate();
 
+    const nameRef = React.useRef(null);
+    const typeRef = React.useRef(null);
+    const mailRef = React.useRef(null);
+    const loginRef = React.useRef(null);
+    const passwordRef = React.useRef(null);
+
     const store = React.useContext(InitDataContext);
 
     const stock = React.useContext(OutOfStockContext);
@@ -64,7 +70,14 @@ const Forms = ({ initialValues }) => {
                                 <input
                                     placeholder='Your name'
                                     type={'text'}
-                                    name='name' 
+                                    name='name'
+                                    ref={nameRef}
+                                    onKeyDown={(e) => {
+                                        if (e.key === 'Enter') {
+                                            e.target.blur()
+                                            typeRef.current.focus();
+                                        }
+                                    }}
                                     onChange={handleChange} 
                                     onBlur={async (e) => {
                                         handleBlur(e); 
@@ -85,6 +98,7 @@ const Forms = ({ initialValues }) => {
                                 <label htmlFor='login'>Device type</label><br/>
                                 <select 
                                     onChange={handleChange}
+                                    ref={typeRef}
                                     onBlur={async (e) => {
                                         handleBlur(e); 
                                         await axios.post(`https://proseller.pro/api/update_user_info`, {
@@ -110,7 +124,14 @@ const Forms = ({ initialValues }) => {
                                 <input
                                     placeholder='Your Email'
                                     type={'text'}
-                                    name='email' 
+                                    name='email'
+                                    ref={mailRef}
+                                    onKeyDown={(e) => {
+                                        if (e.key === 'Enter') {
+                                            e.target.blur()
+                                            loginRef.current.focus()
+                                        }
+                                    }}
                                     onChange={handleChange} 
                                     onBlur={async (e) => {
                                         handleBlur(e); 
@@ -132,7 +153,14 @@ const Forms = ({ initialValues }) => {
                                 <input 
                                     placeholder='Your in-game login'
                                     type={'text'}
-                                    name='login' 
+                                    name='login'
+                                    ref={loginRef}
+                                    onKeyDown={(e) => {
+                                        if (e.key === 'Enter') {
+                                            e.target.blur()
+                                            passwordRef.current.focus()
+                                        }
+                                    }}
                                     onChange={handleChange} 
                                     onBlur={async (e) => {
                                         handleBlur(e); 
@@ -153,7 +181,13 @@ const Forms = ({ initialValues }) => {
                                 <input
                                     placeholder='Your in-game password'
                                     type={'password'}
-                                    name='password' 
+                                    name='password'
+                                    ref={passwordRef}
+                                    onKeyDown={(e) => {
+                                        if (e.key === 'Enter') {
+                                            e.target.blur()
+                                        }
+                                    }}
                                     onChange={handleChange} 
                                     onBlur={async (e) => {
                                         handleBlur(e); 
