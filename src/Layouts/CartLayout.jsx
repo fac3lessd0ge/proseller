@@ -37,9 +37,8 @@ const CartLayout = () => {
         <>
             <Header title={'Cart'} back={true} withCart={false}/>
             <div className='catalog__container' style={{ paddingTop : 'calc(min(10vh, 95px))', height: 'calc(100vh - calc(min(10vh, 95px)))', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-                <Forms initialValues={userInfo} />
                 
-                {/* {(empty || serverData?.length === 0) && <div style={{fontSize: '30px', height: '100%', display: 'flex', flexDirection: 'column', placeItems: 'center', justifyContent: 'center', gap: '40px'}}>
+                {(empty || serverData?.length === 0) && <div style={{fontSize: '30px', height: '100%', display: 'flex', flexDirection: 'column', placeItems: 'center', justifyContent: 'center', gap: '40px'}}>
                     <>Your cart is empty</>
                     <CartLink text={'Back to store'} to='/proseller/cats/0'/>
                 </div>}
@@ -63,7 +62,7 @@ const CartLayout = () => {
                 {!isLoading && serverData?.length === 0 && <div style={{fontSize: '30px', height: '100%', display: 'flex', flexDirection: 'column', placeItems: 'center', justifyContent: 'center', gap: '40px'}}>
                     <>Your cart is empty</>
                     <CartLink text={'Back to store'} to='/proseller/cats/0'/>
-                </div>}   */}
+                </div>}
             </div>
         </>
     );
