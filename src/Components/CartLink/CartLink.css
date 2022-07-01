@@ -3,8 +3,9 @@
     height: 38px;
     background-color: #06a209;
     border-radius: 4px;
-    font-size: 18px;
     display: grid;
+    font-size: 20px;
+    font-weight: 700;
     place-items: center;
     transition: 0.1s;
     z-index: 100;

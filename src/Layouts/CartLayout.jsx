@@ -13,6 +13,8 @@ const CartLayout = () => {
 
     const [isLoading, setIsLoading] = React.useState(true);
 
+    const [userInfo, setUserInfo] = React.useState({});
+
     const [empty, setEmpty] = React.useState(false);
 
     // eslint-disable-next-line
@@ -27,7 +29,7 @@ const CartLayout = () => {
         if (store.cartID) {
             axios.post(`https://proseller.pro/api/basket/`,
                 {basket_id: store.cartID, _auth: store.initData })
-                .then((res) => {setServerData(res.data.results.products)})
+                .then((res) => {setServerData(res.data.results.products); setUserInfo(res.data.results.user_info)})
                 .then(() => { setIsLoading(false) });
         } else {
             setEmpty(true);
@@ -35,11 +37,15 @@ const CartLayout = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+    React.useEffect(() => {
+        console.log(serverData);
+    }, [serverData])
+
     return (
         <>
             <Header title={'Cart'} back={true} withCart={false}/>
             <div className='catalog__container' style={{ paddingTop : 'calc(min(10vh, 95px))', height: 'calc(100vh - calc(min(10vh, 95px)))', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-                {empty && <div style={{fontSize: '30px', height: '100%', display: 'flex', flexDirection: 'column', placeItems: 'center', justifyContent: 'center', gap: '40px'}}>
+                {(empty || serverData?.length === 0) && <div style={{fontSize: '30px', height: '100%', display: 'flex', flexDirection: 'column', placeItems: 'center', justifyContent: 'center', gap: '40px'}}>
                     <>Your cart is empty</>
                     <CartLink text={'Back to store'} to='/proseller/cats/0'/>
                 </div>}
@@ -58,7 +64,7 @@ const CartLayout = () => {
                             </div>
                         </div>
                     })}
-                    {serverData?.length !== 0 && <Forms onSuccess={clearServerData} />}
+                    {serverData?.length !== 0 && <Forms initialValues={userInfo} />}
                 </div>}
                 {!isLoading && serverData?.length === 0 && <div style={{fontSize: '30px', height: '100%', display: 'flex', flexDirection: 'column', placeItems: 'center', justifyContent: 'center', gap: '40px'}}>
                     <>Your cart is empty</>

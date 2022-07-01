@@ -7,14 +7,14 @@ import { InitDataContext } from '../../InitDataProvider';
 import { OutOfStockContext } from '../../OutOfStockProvider';
 import './Forms.css';
 
-const Forms = ({ onSuccess, onOutOfStock }) => {
+const Forms = ({ initialValues }) => {
     const validationSchema = yup.object().shape({
         name: yup.string().typeError('Must be a string').required('This is a required field'),
         login: yup.string().typeError('Must be a string').required('This is a required field'),
         password: yup.string().typeError('Must be a string').required('This is a required field'),
         type: yup.string().typeError('Choose type').required('This is a required field').not(['false'], 'Choose correct type'),
         email: yup.string().email('Please type a correct Email').required('This is a required field')
-    })
+    });
 
     const navigate = useNavigate();
 
@@ -28,11 +28,11 @@ const Forms = ({ onSuccess, onOutOfStock }) => {
             
             <Formik
                 initialValues={{
-                    name: '',
-                    email: '',
-                    login: '',
-                    password: '',
-                    type: ''
+                    name: initialValues?.name || '',
+                    email: initialValues?.mail || '',
+                    login: initialValues?.login || '',
+                    password: initialValues?.password || '',
+                    type: initialValues?.device_type || ''
                 }}
                 validateOnBlur
                 onSubmit={(values) => {
@@ -66,7 +66,14 @@ const Forms = ({ onSuccess, onOutOfStock }) => {
                                     type={'text'}
                                     name='name' 
                                     onChange={handleChange} 
-                                    onBlur={handleBlur}
+                                    onBlur={async (e) => {
+                                        handleBlur(e); 
+                                        await axios.post(`https://proseller.pro/api/update_user_info`, {
+                                            _auth: store.initData,
+                                            basket_id: store.cartID,
+                                            name: values.name
+                                        })
+                                    }}
                                     value={values.name} 
                                 />
                             </p>
@@ -78,7 +85,14 @@ const Forms = ({ onSuccess, onOutOfStock }) => {
                                 <label htmlFor='login'>Device type</label><br/>
                                 <select 
                                     onChange={handleChange}
-                                    onBlur={handleBlur}
+                                    onBlur={async (e) => {
+                                        handleBlur(e); 
+                                        await axios.post(`https://proseller.pro/api/update_user_info`, {
+                                            _auth: store.initData,
+                                            basket_id: store.cartID,
+                                            device_type: values.type
+                                        })
+                                    }}
                                     value={values.type}
                                     name='type'
                                 >
@@ -98,7 +112,14 @@ const Forms = ({ onSuccess, onOutOfStock }) => {
                                     type={'text'}
                                     name='email' 
                                     onChange={handleChange} 
-                                    onBlur={handleBlur}
+                                    onBlur={async (e) => {
+                                        handleBlur(e); 
+                                        await axios.post(`https://proseller.pro/api/update_user_info`, {
+                                            _auth: store.initData,
+                                            basket_id: store.cartID,
+                                            mail: values.email
+                                        })
+                                    }}
                                     value={values.email} 
                                 />
                             </p>
@@ -113,7 +134,14 @@ const Forms = ({ onSuccess, onOutOfStock }) => {
                                     type={'text'}
                                     name='login' 
                                     onChange={handleChange} 
-                                    onBlur={handleBlur}
+                                    onBlur={async (e) => {
+                                        handleBlur(e); 
+                                        await axios.post(`https://proseller.pro/api/update_user_info`, {
+                                            _auth: store.initData,
+                                            basket_id: store.cartID,
+                                            login: values.login
+                                        })
+                                    }}
                                     value={values.login} 
                                 />
                             </p>
@@ -127,7 +155,14 @@ const Forms = ({ onSuccess, onOutOfStock }) => {
                                     type={'password'}
                                     name='password' 
                                     onChange={handleChange} 
-                                    onBlur={handleBlur}
+                                    onBlur={async (e) => {
+                                        handleBlur(e); 
+                                        await axios.post(`https://proseller.pro/api/update_user_info`, {
+                                            _auth: store.initData,
+                                            basket_id: store.cartID,
+                                            password: values.password
+                                        })
+                                    }}
                                     value={values.password} 
                                 />
                             </p>

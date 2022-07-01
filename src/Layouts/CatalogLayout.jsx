@@ -36,7 +36,7 @@ const CatalogLayout = ({ headerTitle, type }) => {
     return (
         <>
             <Header title={headerTitle} back={Number(id) === 0 ? false : true } />
-            <div className="catalog__container" style={{ paddingTop : 'calc(min(9vh, 95px))', paddingBottom: '50px' }}>
+            <div className="catalog__container" style={{ paddingTop : 'min(10vh, 95px)', paddingBottom: '50px' }}>
                 {!isLoading && Array.isArray(serverData) && serverData?.map((element, index) => {
                     return (<>
                         <Link to={`/proseller/cats/${element.id}`}>
@@ -45,7 +45,7 @@ const CatalogLayout = ({ headerTitle, type }) => {
                                     name={element.name}
                                     description={element.mini_desc}
                                     imgUrl={element.image}
-                                    key={id}
+                                    key={element.id}
                                 />
                         </Link>
                         

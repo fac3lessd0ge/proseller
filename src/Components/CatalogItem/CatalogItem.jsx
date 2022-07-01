@@ -34,7 +34,6 @@ const CatalogItem = ({
 
         const img = new Image();
         img.src = URL;
-        console.log(img)
         img.addEventListener('load', onLoad);
 
         return () => {
