@@ -4,7 +4,7 @@ import { ReactComponent as OutStockSVG } from '../../Assets/outOfStock.svg';
 
 import './CartModal.css';
 
-const CartModal = ({ active, info}) => {
+const CartModal = ({ active, info }) => {
     // eslint-disable-next-line
     const [andMore, setAndMore] = React.useState((info && info?.length > 4) ? true : false)
 
@@ -24,7 +24,7 @@ const CartModal = ({ active, info}) => {
 
                 {andMore && <div className='modal__item'>and some others...</div>}
 
-                <button onClick={() => navigate('/proseller/cart', { replace: true })} className='modal__submit'> Okay, reload cart </button>
+                <button onClick={() => navigate('/proseller/cats/0', { replace: true })} className='modal__submit'> Okay, reload cart </button>
             </div>
         </div>
     );

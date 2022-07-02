@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import BuyButton from '../CatalogBuyButton/BuyButton';
 
 import './CatalogItem.css';
@@ -17,6 +17,8 @@ const CatalogItem = ({
 }) => {
 	const [linkTo, setLinkTo] = React.useState('');
     const [imgLoaded, setImgLoaded] = React.useState(false);
+
+	const navigate = useNavigate();
   
     const URL = imgUrl.includes('media')
     ? 'https://proseller.pro/django' + imgUrl.slice(12)
@@ -45,7 +47,10 @@ const CatalogItem = ({
 
 	return (
 		<div className={`item-wrapper ${product ? '' : 'm10'}`}>
-			<div className="catalog__item">
+			<div 
+				className="catalog__item"
+				onClick={() => navigate(linkTo, { replace: true })}
+			>
 				<div className="catalog__avatar">
 					{imgLoaded ? (
 						<img src={URL} alt="product avatar" />

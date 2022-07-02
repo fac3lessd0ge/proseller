@@ -25,11 +25,12 @@ p > label {
     width: 99%;
 }
 
-.form > p > input {
+.form > p > input, .form > p > input:focus {
     margin: 5px 0px;
     width: 96%;
     height: 24px;
-    font-size: 15px;
+    font-size: 16px;
+    border-radius: 4px;
     outline: none;
     padding: 3px 5px;
 }
@@ -37,7 +38,7 @@ p > label {
 select {
     padding: 3px 5px;
     outline: none;
-
+    border-radius: 4px;
     width: 100%;
     padding: 3px 5px;
     height: 34px;

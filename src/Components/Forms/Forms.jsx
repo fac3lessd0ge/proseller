@@ -97,7 +97,7 @@ const Forms = ({ initialValues }) => {
                             <p>
                                 <label htmlFor='login'>Device type</label><br/>
                                 <select 
-                                    onChange={handleChange}
+                                    onChange={(e) => {handleChange(e); mailRef.current.focus()}}
                                     ref={typeRef}
                                     onBlur={async (e) => {
                                         handleBlur(e); 
