@@ -24,7 +24,7 @@ const CartModal = ({ active, info }) => {
 
                 {andMore && <div className='modal__item'>and some others...</div>}
 
-                <button onClick={() => navigate('/proseller/cats/0', { replace: true })} className='modal__submit'> Okay, reload cart </button>
+                <button onClick={() => navigate('/proseller/cart', { replace: true })} className='modal__submit'> Okay, reload cart </button>
             </div>
         </div>
     );
