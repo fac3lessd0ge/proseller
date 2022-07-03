@@ -30,19 +30,28 @@ const Header = ({ title, back, faq = true }) => {
 				{title}
 			</div>
 
-			{faq && (
-				<FaQuestionCircle
-					className="clickable"
-					onClick={(e) => delayedNav('/proseller/faq', 100)}
-				/>
-			)}
-
-			<div
-				className="header__homeLink clickable"
-				onClick={(e) => delayedNav('/proseller/cats/0', 100)}
+			<div 
+				style={{
+					display: 'flex',
+					flexDirection: 'rows'
+				}}
 			>
-				{'Home'}
+				{faq && <div
+					className="header__homeLink clickable"
+					onClick={(e) => delayedNav('/proseller/faq', 100)}
+				>
+					{'FAQ'}
+				</div>}
+
+				<div
+					className="header__homeLink clickable"
+					onClick={(e) => delayedNav('/proseller/cats/0', 100)}
+				>
+					{'Home'}
+				</div>
 			</div>
+
+			
 		</header>
 	);
 };
