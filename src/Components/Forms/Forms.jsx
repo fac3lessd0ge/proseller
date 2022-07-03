@@ -3,6 +3,8 @@ import * as yup from 'yup';
 import axios from 'axios';
 import { Formik } from 'formik';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 import { InitDataContext } from '../../InitDataProvider';
 import { OutOfStockContext } from '../../OutOfStockProvider';
 import './Forms.css';
@@ -13,10 +15,12 @@ const Forms = ({ initialValues }) => {
         login: yup.string().typeError('Must be a string').required('This is a required field'),
         password: yup.string().typeError('Must be a string').required('This is a required field'),
         type: yup.string().typeError('Choose type').required('This is a required field').not(['false'], 'Choose correct type'),
-        email: yup.string().email('Please type a correct Email').required('This is a required field')
+        email: yup.string().email('Please type a correct Email').required('This is a required field'),
     });
 
     const navigate = useNavigate();
+
+    const [agreeWithPolicy, setAgreeWithPolicy] = React.useState(false);
 
     const nameRef = React.useRef(null);
     const typeRef = React.useRef(null);
@@ -62,7 +66,7 @@ const Forms = ({ initialValues }) => {
                 }}
                 validationSchema={validationSchema}
             >
-                {({ values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty }) => 
+                {({ values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty  }) => 
                     <div className={'form-field'}>
                         <div className="form">
                             <p>
@@ -202,10 +206,12 @@ const Forms = ({ initialValues }) => {
                             </p>
                             { touched.password && errors.password && <p className='error'>{errors.password}</p>}
                         </div>
+
+                        
                         <button 
                             disabled={!isValid && !dirty}
                             type='submit'
-                            onClick={handleSubmit} 
+                            onClick={(e) => agreeWithPolicy ? handleSubmit(e) : () => {} }
                             className='subBtn'
                         > 
                             Submit
@@ -213,6 +219,10 @@ const Forms = ({ initialValues }) => {
                     </div>
                 }
             </Formik>
+            <div style={{fontSize: '12px', display: 'flex', alignItems: 'center'}} >
+                <input type={'checkbox'} onChange={(e) => {setAgreeWithPolicy(e.target.checked)}} style={{aspectRatio: '1', width: '20px'}} />
+                <span style={{marginLeft: '5px'}}> I have read and agreed with the <Link style={{ textDecoration: 'underline' }} to='/proseller/offer'>public offer</Link> and <br /> <Link style={{ textDecoration: 'underline' }} to='/proseller/privacy'>confidentiality </Link> of the bot </span>
+            </div>
         </div>
     );
 }

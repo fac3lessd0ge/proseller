@@ -1,31 +1,50 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { FaQuestionCircle } from 'react-icons/fa';
+
+import useDelayedNavigation from '../../Hooks/useDelayedNavigation';
 import NavBackButton from '../NavBackButton/NavBackButton';
-import './Header.css'
+import './Header.css';
 
-const Header = ({ title, back, withCart = true}) => {
-    const navigate = useNavigate();
+const Header = ({ title, back, faq = true }) => {
+	const delayedNav = useDelayedNavigation();
 
-    const backClickHandler = () => {
-        navigate(-1);
-    }
+	const backClickHandler = () => {
+		delayedNav(-1, 100);
+	};
 
-    return (
-        <header>
-            <div style={{ paddingTop: '4px'}} className='header__icon'>
-                {back && 
-                    <div onClick={backClickHandler} className='back-button'>
-                        <NavBackButton />
-                    </div>}
-            </div>
-            
-            { title }
+	return (
+		<header>
+			<div
+				style={{
+					paddingTop: '4px',
+					display: 'flex',
+					gap: '5px',
+					marginLeft: '20px'
+				}}
+			>
+				{back && (
+					<div onClick={backClickHandler} className="back-button">
+						<NavBackButton />
+					</div>
+				)}
+				{title}
+			</div>
 
-            <div className='header__homeLink clickable'><Link to='/proseller/cats/0'>{ 'Home' }</Link> </div>
-            
-        </header>
-    );
-}
- 
+			{faq && (
+				<FaQuestionCircle
+					className="clickable"
+					onClick={(e) => delayedNav('/proseller/faq', 100)}
+				/>
+			)}
+
+			<div
+				className="header__homeLink clickable"
+				onClick={(e) => delayedNav('/proseller/cats/0', 100)}
+			>
+				{'Home'}
+			</div>
+		</header>
+	);
+};
+
 export default Header;

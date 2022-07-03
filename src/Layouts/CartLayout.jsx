@@ -30,6 +30,10 @@ const CartLayout = () => {
 				})
 				.then(() => {
 					setIsLoading(false);
+				})
+				.catch((e) => {
+					console.error(e);
+					setEmpty(true);
 				});
 		} else {
 			setEmpty(true);

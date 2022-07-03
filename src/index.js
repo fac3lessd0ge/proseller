@@ -9,6 +9,7 @@ import CatalogLayout from './Layouts/CatalogLayout';
 import ItemLayout from './Layouts/ItemLayout';
 import OrderLayout from './Layouts/OrderLayout';
 import ReloadDummyRoute from './Layouts/ReloadDummyRoute';
+import InfoPage from './Layouts/InfoPage/InfoPage';
 
 /*global Telegram*/
 const initData = Telegram.WebApp.initData;
@@ -25,6 +26,9 @@ root.render(
 					<Route path='/proseller/cart' element={<CartLayout />} />
 					<Route path='/proseller/order' element={<OrderLayout />} />
 					<Route path='/proseller/reload' element={<ReloadDummyRoute />} />
+					<Route path='/proseller/faq' element={<InfoPage type={'FAQ'} />} />
+					<Route path='/proseller/offer' element={<InfoPage type={'Offer'} />} />
+					<Route path= '/proseller/privacy' element={<InfoPage type={'Privacy'} />} />
 				</Routes>
 			</BrowserRouter>
 		</OutOfStockProvider>

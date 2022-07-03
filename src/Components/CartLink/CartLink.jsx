@@ -1,12 +1,29 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import useDelayedNavigation from '../../Hooks/useDelayedNavigation';
 import './CartLink.css';
 
 
 const CartLink = ({ text, to }) => {
+
+    const delayedNav = useDelayedNavigation();
+
     return (
-            <div className='cart__link clickable' role={'button'}> <Link style={{width: '100%'}} to={to}> <div style={{width: '100%', display: 'grid', placeItems: 'center'}}>{text}</div> </Link> </div>
-    );
+		<div 
+        className="cart__link clickable" 
+        role={'button'}
+        onClick={() => delayedNav(to, 120)}
+        >
+				<div
+					style={{
+						width: '100%',
+						display: 'grid',
+						placeItems: 'center'
+					}}
+				>
+					{text}
+				</div>
+		</div>
+	);
 }
  
 export default CartLink;
