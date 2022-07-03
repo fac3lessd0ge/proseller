@@ -46,23 +46,27 @@ const Forms = ({ initialValues }) => {
                 }}
                 validateOnBlur
                 onSubmit={(values) => {
-                    axios.post('https://proseller.pro/api/cart/', {
-                        name: values.name,
-                        email: values.email,
-                        login: values.login,
-                        password: values.password,
-                        type: values.type,
-                        _auth: store.initData,
-                        basket_id: store.cartID
-                    }).then((res) => {
-                        if (res.data.status === 'error') {
-                            stock.setOutOfStock(...res.data.results);
-                            return 
-                        }
-                        store.success = true;
-                    }).then(() => {
-                        navigate('/proseller/reload', { replace: true });
-                    })
+                    if (agreeWithPolicy) {
+                        axios.post('https://proseller.pro/api/cart/', {
+                            name: values.name,
+                            email: values.email,
+                            login: values.login,
+                            password: values.password,
+                            type: values.type,
+                            _auth: store.initData,
+                            basket_id: store.cartID
+                        }).then((res) => {
+                            if (res.data.status === 'error') {
+                                stock.setOutOfStock(...res.data.results);
+                                return 
+                            }
+                            store.success = true;
+                        }).then(() => {
+                            navigate('/proseller/reload', { replace: true });
+                        })
+                    }
+                    
+                    
                 }}
                 validationSchema={validationSchema}
             >
@@ -211,7 +215,7 @@ const Forms = ({ initialValues }) => {
                         <button 
                             disabled={!isValid && !dirty}
                             type='submit'
-                            onClick={(e) => agreeWithPolicy ? handleSubmit(e) : () => {} }
+                            onClick={handleSubmit}
                             className='subBtn'
                         > 
                             Submit
