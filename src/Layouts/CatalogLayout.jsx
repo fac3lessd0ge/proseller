@@ -48,33 +48,6 @@ const CatalogLayout = ({ headerTitle, type }) => {
                                     key={element.id}
                                 />
                         </Link>
-                        
-                        {/* {element?.products?.map((element, id) => 
-                            <CatalogItem 
-                                product={true}
-                                id={element.id}
-                                name={element.name}
-                                description={element.mini_desc}
-                                fastbuy={element.fast_buy}
-                                price={element.price}
-                                imgUrl={element.image}
-                                key={id}
-                            />
-                        )} */}
-
-                        {/* {element?.sub_category?.map((element, id) => 
-                            <Link to={`/proseller/cats/${element.id}`}>
-                                <CatalogItem
-                                    id={element.id}
-                                    name={element.name}
-                                    description={element.mini_desc}
-                                    imgUrl={element.image}
-                                    key={id}
-                                />
-                            </Link>
-                        )} */}
-
-                        
                     </>
                 )}
                 )}
@@ -111,16 +84,23 @@ const CatalogLayout = ({ headerTitle, type }) => {
                     }
                 )}
 
-                {/* {serverData?.sub_category?.length !== 0 && serverData?.map((element, index) => 
-                    <CatalogItem 
-                        key={index}
-                        name={element.name}
-                        imgUrl={element.image}
-                        description={element.description}
-                        id={element.id}
-                        product={false}
-                    />
-                )} */}
+                { id === '0' && 
+                <div 
+                    style={{ 
+                        display: 'flex',
+                        paddingTop: '3%',
+                        paddingLeft: '2%',
+                        paddingRight: '2%',
+                        justifyContent: 'space-around',
+                        paddingBottom: '30px',
+                        textDecoration: 'underline',
+                        fontSize: '16px'
+                    }}
+                >
+                    <Link style={{color: '#968787'}} to={'/proseller/offer'}> Public offer </Link>
+                    <Link style={{color: '#908585'}} to={'/proseller/privacy'}> Privacy policy </Link>    
+                </div>}
+
                 <div className="link-container clickable" style={{position: 'fixed', bottom: '10px', width: '100%', display: 'grid', placeItems: 'center', zIndex: '100'}}>
                     <CartLink text={'To Cart'} to='/proseller/cart' />
                 </div>

@@ -5,6 +5,11 @@ import FAQ from './FAQ';
 import Offer from './Offer';
 
 const InfoPage = ({ type }) => {
+
+	React.useEffect(() => {
+		window.scrollTo(0, 0);
+	}, [])
+
 	return (
 		<>
 			<Header back={true} title={type} faq={false} />
