@@ -1,5 +1,4 @@
 import React from 'react';
-import { FaQuestionCircle } from 'react-icons/fa';
 
 import useDelayedNavigation from '../../Hooks/useDelayedNavigation';
 import NavBackButton from '../NavBackButton/NavBackButton';
@@ -37,6 +36,7 @@ const Header = ({ title, back, faq = true }) => {
 				}}
 			>
 				{faq && <div
+					style={{width: '54px', textAlign: 'center', letterSpacing: '1px'}}
 					className="header__homeLink clickable"
 					onClick={(e) => delayedNav('/proseller/faq', 100)}
 				>
