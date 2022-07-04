@@ -98,6 +98,7 @@ const CatalogLayout = ({ headerTitle, type }) => {
                     }}
                 >
                     <Link style={{color: '#968787'}} to={'/proseller/offer'}> Public offer </Link>
+                    <Link style={{color: '#968787'}} to={'/proseller/contacts'}> Contacts </Link>
                     <Link style={{color: '#908585'}} to={'/proseller/privacy'}> Privacy policy </Link>    
                 </div>}
 

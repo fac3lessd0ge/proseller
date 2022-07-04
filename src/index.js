@@ -27,6 +27,7 @@ root.render(
 					<Route path='/proseller/order' element={<OrderLayout />} />
 					<Route path='/proseller/reload' element={<ReloadDummyRoute />} />
 					<Route path='/proseller/faq' element={<InfoPage type={'FAQ'} />} />
+					<Route path='/proseller/contacts' element={<InfoPage type={'Contacts'} />} />
 					<Route path='/proseller/offer' element={<InfoPage type={'Offer'} />} />
 					<Route path= '/proseller/privacy' element={<InfoPage type={'Privacy'} />} />
 				</Routes>

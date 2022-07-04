@@ -3,6 +3,7 @@ import Header from '../../Components/Header/Header';
 import Confidentiality from './Confidentiality';
 import FAQ from './FAQ';
 import Offer from './Offer';
+import ContactsPage from './ContactsPage';
 
 const InfoPage = ({ type }) => {
 
@@ -28,6 +29,9 @@ const InfoPage = ({ type }) => {
 				}
 				{
 					type === 'Privacy' && <Confidentiality />
+				}
+				{
+					type === 'Contacts' && <ContactsPage />
 				}
 			</div>
 		</>
