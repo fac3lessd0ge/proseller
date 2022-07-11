@@ -21,6 +21,7 @@ const Forms = ({ initialValues }) => {
     const navigate = useNavigate();
 
     const [agreeWithPolicy, setAgreeWithPolicy] = React.useState(false);
+    const [externalLink, setExternalLink] = React.useState('');
 
     const nameRef = React.useRef(null);
     const typeRef = React.useRef(null);
@@ -31,6 +32,12 @@ const Forms = ({ initialValues }) => {
     const store = React.useContext(InitDataContext);
 
     const stock = React.useContext(OutOfStockContext);
+
+    React.useEffect(() => {
+        if (externalLink) {
+            window.location.replace(externalLink);
+        }
+    }, [externalLink])
 
 
     return (
@@ -61,8 +68,9 @@ const Forms = ({ initialValues }) => {
                                 return 
                             }
                             store.success = true;
-                        }).then(() => {
-                            navigate('/proseller/reload', { replace: true });
+                            setExternalLink(res.data.link)
+                        }).then((res) => {
+                            
                         })
                     }
                     
