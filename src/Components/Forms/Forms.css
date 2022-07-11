@@ -57,6 +57,15 @@ select {
     bottom: 30px;
 }
 
+.disabled {
+    background-color: grey;
+
+}
+
+.disabled:active {
+    background-color: grey !important;
+}
+
 .subBtn:active {
     background-color: #09780b;
     transition: 0.1s;

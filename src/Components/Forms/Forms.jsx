@@ -39,6 +39,10 @@ const Forms = ({ initialValues }) => {
         }
     }, [externalLink])
 
+    React.useEffect(() => {
+        console.log(agreeWithPolicy);
+    }, [agreeWithPolicy])
+
 
     return (
         <div style={{width: '100%', display: 'grid', placeItems: 'center', paddingBottom: '70px'}}>
@@ -224,7 +228,7 @@ const Forms = ({ initialValues }) => {
                             disabled={!isValid && !dirty}
                             type='submit'
                             onClick={handleSubmit}
-                            className='subBtn'
+                            className={"subBtn " + (agreeWithPolicy ? '' : 'disabled')}
                         > 
                             Submit
                         </button>
