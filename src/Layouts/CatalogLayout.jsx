@@ -5,6 +5,7 @@ import CartLink from '../Components/CartLink/CartLink';
 import CatalogItem from '../Components/CatalogItem/CatalogItem';
 import Header from '../Components/Header/Header';
 import { InitDataContext } from '../InitDataProvider';
+import { BASE_URL } from '../URLS';
 
 const CatalogLayout = ({ headerTitle, type }) => {
     const [serverData, setServerData] = React.useState(null);
@@ -16,7 +17,7 @@ const CatalogLayout = ({ headerTitle, type }) => {
     let { id } = useParams();
      
     React.useEffect(() => {
-        axios.get(`https://proseller.pro/api/category/${id}`).then((res) => {
+        axios.get(BASE_URL + `/category/${id}`).then((res) => {
             setServerData(res.data.results)
         }).then((res) => setIsLoading(false));
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -24,7 +25,7 @@ const CatalogLayout = ({ headerTitle, type }) => {
 
     React.useEffect(() => {
         if (!store.cartID) {
-            axios.post('https://proseller.pro/api/basket/', {
+            axios.post(BASE_URL + '/basket/', {
                 _auth: store.initData
             }).then((res) => {
                 store.cartID = res.data?.results?.basket_id

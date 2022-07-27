@@ -5,6 +5,7 @@ import BuyButton from '../Components/CatalogBuyButton/BuyButton';
 import Header from '../Components/Header/Header';
 import PhotoCarousel from '../Components/PhotoCarousel/PhotoCarousel';
 import CartLink from '../Components/CartLink/CartLink';
+import { BASE_URL } from '../URLS';
 
 const ItemLayout = () => {
 
@@ -14,7 +15,7 @@ const ItemLayout = () => {
     const [active, setActive] = React.useState(false)
 
     React.useEffect(() => {
-        axios.get(`https://proseller.pro/api/product/${id}`)
+        axios.get(BASE_URL + `/product/${id}`)
             .then((res) => {
                 setServerData(res.data.results);
                 if (!res.data.results.familiarization) {
