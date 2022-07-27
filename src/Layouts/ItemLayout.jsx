@@ -5,7 +5,7 @@ import BuyButton from '../Components/CatalogBuyButton/BuyButton';
 import Header from '../Components/Header/Header';
 import PhotoCarousel from '../Components/PhotoCarousel/PhotoCarousel';
 import CartLink from '../Components/CartLink/CartLink';
-import { BASE_URL } from '../URLS';
+import { BASE_API_URL } from '../URLS';
 
 const ItemLayout = () => {
 
@@ -15,7 +15,7 @@ const ItemLayout = () => {
     const [active, setActive] = React.useState(false)
 
     React.useEffect(() => {
-        axios.get(BASE_URL + `/product/${id}`)
+        axios.get(BASE_API_URL + `/product/${id}`)
             .then((res) => {
                 setServerData(res.data.results);
                 if (!res.data.results.familiarization) {
@@ -40,10 +40,9 @@ const ItemLayout = () => {
                 <div className='catalog__container' style={{ paddingTop : 'calc(min(3vh, 95px))', paddingBottom: '50px' }}>
                     <PhotoCarousel imgArr={serverData?.images} />
                     <div style={{width: '80%', display: 'grid', placeItems: 'center', fontSize: '30px', padding: '0 10%'}}>{serverData.name}</div>
-                    <div style={{ padding: '0 12px',  display: 'grid', placeItems: 'center', marginTop: '20px'}}>{serverData.description}</div>
+                    <div style={{ padding: '0 12px',  display: 'grid', placeItems: 'center', marginTop: '20px'}}>{serverData?.description || serverData?.mini_desc}</div>
                     <div style={{width: '100%', display: 'grid', placeItems: 'center', marginTop: '10px'}}>Max amount: {serverData.quantity === -1 ? 'unlimited' : serverData.quantity}  <div className='catalog__price'>{serverData.price}</div></div>
                     {serverData?.familiarization && <div className="familize" style={{width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '15px'}}>
-                        
                         <input onChange={onCheckboxChange} type={'checkbox'} />
                         {"I'm familiarized with this product"}
                     </div>}

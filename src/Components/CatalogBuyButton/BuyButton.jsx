@@ -3,7 +3,7 @@ import React from 'react';
 import useDebounce from '../../Hooks/useDebounce';
 import useUpdateEffect from '../../Hooks/useUpdateEffect';
 import { InitDataContext } from '../../InitDataProvider';
-import { BASE_URL } from '../../URLS';
+import { BASE_API_URL } from '../../URLS';
 
 import './BuyButton.css';
 
@@ -45,7 +45,7 @@ const BuyButton = ({ id, max = 10000, active = true }) => {
 
     useUpdateEffect(() => {
         if (store.cartID) {
-            axios.post(BASE_URL + `/basket`, {
+            axios.post(BASE_API_URL + `/basket`, {
             product_id: id,
             quantity: debouncedCount,
             _auth: store.initData,
@@ -54,7 +54,7 @@ const BuyButton = ({ id, max = 10000, active = true }) => {
         }
 
         else {
-            axios.post(BASE_URL + `/basket`, {
+            axios.post(BASE_API_URL + `/basket`, {
                 product_id: id,
                 quantity: debouncedCount,
                 _auth: store.initData

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { BASE_URL } from '../../URLS';
 import BuyButton from '../CatalogBuyButton/BuyButton';
 
 import './CatalogItem.css';
@@ -21,8 +22,8 @@ const CatalogItem = ({
 	const navigate = useNavigate();
   
     const URL = imgUrl.includes('media')
-    ? 'https://proseller.pro/django' + imgUrl.slice(12)
-    : 'https://proseller.pro/django/media/' + imgUrl;
+    ? BASE_URL + '/django' + imgUrl.slice(12)
+    : BASE_URL + '/django/media/' + imgUrl;
 
     const onLoad = () => setImgLoaded(true);
 
@@ -72,7 +73,7 @@ const CatalogItem = ({
 					</div>
 					<div className="catalog__description">
 						{description?.length > 40
-							? description.substring(0, 40) + '...'
+							? description.substring(0, 60) + '...'
 							: description}
 					</div>
 					{product && <div className="catalog__price">{price}</div>}

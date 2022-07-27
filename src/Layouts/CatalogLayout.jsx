@@ -5,7 +5,7 @@ import CartLink from '../Components/CartLink/CartLink';
 import CatalogItem from '../Components/CatalogItem/CatalogItem';
 import Header from '../Components/Header/Header';
 import { InitDataContext } from '../InitDataProvider';
-import { BASE_URL } from '../URLS';
+import { BASE_API_URL } from '../URLS';
 
 const CatalogLayout = ({ headerTitle, type }) => {
     const [serverData, setServerData] = React.useState(null);
@@ -17,7 +17,7 @@ const CatalogLayout = ({ headerTitle, type }) => {
     let { id } = useParams();
      
     React.useEffect(() => {
-        axios.get(BASE_URL + `/category/${id}`).then((res) => {
+        axios.get(BASE_API_URL + `/category/${id}`).then((res) => {
             setServerData(res.data.results)
         }).then((res) => setIsLoading(false));
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -25,7 +25,7 @@ const CatalogLayout = ({ headerTitle, type }) => {
 
     React.useEffect(() => {
         if (!store.cartID) {
-            axios.post(BASE_URL + '/basket/', {
+            axios.post(BASE_API_URL + '/basket/', {
                 _auth: store.initData
             }).then((res) => {
                 store.cartID = res.data?.results?.basket_id
@@ -73,7 +73,7 @@ const CatalogLayout = ({ headerTitle, type }) => {
                         { element.quantity !== 0 && <CatalogItem
                         key={index}
                         name={element.name}
-                        description={element.description}
+                        description={element.mini_description}
                         imgUrl={element.image}
                         product={true}
                         price={element.price}

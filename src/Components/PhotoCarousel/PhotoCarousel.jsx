@@ -2,6 +2,7 @@ import React from 'react';
 import './PhotoCarousel.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
+import { BASE_URL } from '../../URLS';
 
 const indicatorStyles = {
     background: '#727272',
@@ -50,10 +51,17 @@ const PhotoCarousel = ({ imgArr }) => {
                     );
                 }}
             >
-                {imgArr.map((elem, index) => 
+                {imgArr.map((elem, index) => {
+
+                  const URL = elem.includes('media')
+                  ? BASE_URL + '/django' + elem.slice(12)
+                  : BASE_URL + '/django/media/' + elem;
+                  return (
                     <div key={index}>
-                        <img className='carousel-image' src={elem} alt='Housing'/>
-                    </div>    
+                        <img className='carousel-image' src={URL} alt='Something went wrong'/>
+                    </div>
+                  )    
+                }
                 )}
             </Carousel>
         </div>

@@ -4,7 +4,7 @@ import useUpdateEffect from '../../Hooks/useUpdateEffect';
 import axios from 'axios';
 import { InitDataContext } from '../../InitDataProvider';
 import './CartAmountMeter.css';
-import { BASE_URL } from '../../URLS';
+import { BASE_API_URL } from '../../URLS';
 
 const CartAmountMeter = ({ productID, startAmount, max=99999 }) => {
     const [amount, setAmount] = React.useState(startAmount)
@@ -15,7 +15,7 @@ const CartAmountMeter = ({ productID, startAmount, max=99999 }) => {
 
     useUpdateEffect(() => {
         if (store.cartID) {
-            axios.post(BASE_URL + `/basket`, {
+            axios.post(BASE_API_URL + `/basket`, {
             quantity: debouncedCount,
             _auth: store.initData,
             basket_id: store.cartID,
@@ -24,7 +24,7 @@ const CartAmountMeter = ({ productID, startAmount, max=99999 }) => {
         }
 
         else {
-            axios.post(BASE_URL + `/basket`, {
+            axios.post(BASE_API_URL + `/basket`, {
                 quantity: debouncedCount,
                 product_id: productID,
                 _auth: store.initData

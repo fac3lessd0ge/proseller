@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { InitDataContext } from '../../InitDataProvider';
 import { OutOfStockContext } from '../../OutOfStockProvider';
 import './Forms.css';
-import { BASE_URL } from '../../URLS';
+import { BASE_API_URL } from '../../URLS';
 
 const Forms = ({ initialValues }) => {
     const validationSchema = yup.object().shape({
@@ -59,7 +59,7 @@ const Forms = ({ initialValues }) => {
                 validateOnBlur
                 onSubmit={(values) => {
                     if (agreeWithPolicy) {
-                        axios.post(BASE_URL + '/cart', {
+                        axios.post(BASE_API_URL + '/cart', {
                             name: values.name,
                             email: values.email,
                             login: values.login,
@@ -102,7 +102,7 @@ const Forms = ({ initialValues }) => {
                                     onChange={handleChange} 
                                     onBlur={async (e) => {
                                         handleBlur(e); 
-                                        await axios.post(BASE_URL + `/update_user_info`, {
+                                        await axios.post(BASE_API_URL + `/update_user_info`, {
                                             _auth: store.initData,
                                             basket_id: store.cartID,
                                             name: values.name
@@ -122,7 +122,7 @@ const Forms = ({ initialValues }) => {
                                     ref={typeRef}
                                     onBlur={async (e) => {
                                         handleBlur(e); 
-                                        await axios.post(BASE_URL + `/update_user_info`, {
+                                        await axios.post(BASE_API_URL + `/update_user_info`, {
                                             _auth: store.initData,
                                             basket_id: store.cartID,
                                             device_type: values.type
@@ -156,7 +156,7 @@ const Forms = ({ initialValues }) => {
                                     onChange={handleChange} 
                                     onBlur={async (e) => {
                                         handleBlur(e); 
-                                        await axios.post(BASE_URL + `/update_user_info`, {
+                                        await axios.post(BASE_API_URL + `/update_user_info`, {
                                             _auth: store.initData,
                                             basket_id: store.cartID,
                                             mail: values.email
@@ -185,7 +185,7 @@ const Forms = ({ initialValues }) => {
                                     onChange={handleChange} 
                                     onBlur={async (e) => {
                                         handleBlur(e); 
-                                        await axios.post(BASE_URL + `/update_user_info`, {
+                                        await axios.post(BASE_API_URL + `/update_user_info`, {
                                             _auth: store.initData,
                                             basket_id: store.cartID,
                                             login: values.login
@@ -212,7 +212,7 @@ const Forms = ({ initialValues }) => {
                                     onChange={handleChange} 
                                     onBlur={async (e) => {
                                         handleBlur(e); 
-                                        await axios.post(BASE_URL + `/update_user_info`, {
+                                        await axios.post(BASE_API_URL + `/update_user_info`, {
                                             _auth: store.initData,
                                             basket_id: store.cartID,
                                             password: values.password
