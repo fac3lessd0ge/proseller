@@ -73,7 +73,7 @@ const CatalogLayout = ({ headerTitle, type }) => {
                         { element.quantity !== 0 && <CatalogItem
                         key={index}
                         name={element.name}
-                        description={element.mini_description}
+                        description={element.mini_desc}
                         imgUrl={element.image}
                         product={true}
                         price={element.price}

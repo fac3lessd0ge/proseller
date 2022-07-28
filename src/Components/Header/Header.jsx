@@ -18,21 +18,30 @@ const Header = ({ title, back, faq = true }) => {
 					paddingTop: '4px',
 					display: 'flex',
 					gap: '5px',
-					marginLeft: '20px'
+					marginLeft: '5px',
 				}}
-			>
+        >
 				{back && (
-					<div onClick={backClickHandler} className="back-button">
+          <div onClick={backClickHandler} className="back-button">
 						<NavBackButton />
 					</div>
 				)}
-				{title}
+				<span
+          style={{
+            textOverflow: 'ellipsis',
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            maxWidth: '120px'
+          }}
+        >
+          {title}
+        </span>
 			</div>
 
 			<div 
 				style={{
 					display: 'flex',
-					flexDirection: 'rows'
+					flexDirection: 'row'
 				}}
 			>
 				{faq && <div

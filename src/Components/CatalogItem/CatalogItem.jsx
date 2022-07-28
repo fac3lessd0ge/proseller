@@ -73,7 +73,7 @@ const CatalogItem = ({
 					</div>
 					<div className="catalog__description">
 						{description?.length > 40
-							? description.substring(0, 60) + '...'
+							? description.substring(0, 50) + '...'
 							: description}
 					</div>
 					{product && <div className="catalog__price">{price}</div>}

@@ -8,14 +8,17 @@
     position: absolute;
 }
 
+.carousel .control-dots {
+  z-index: 0 !important;
+}
+
 .carousel-status {
     visibility: hidden;
 }
 
 .carousel-image {
     min-height: 250px !important;
-    height: 30vh;
-    width: 100vw;
+    max-height: 400px !important;
     object-fit: cover;
 }
 

@@ -7,7 +7,7 @@ import { BASE_API_URL } from '../../URLS';
 
 import './BuyButton.css';
 
-const BuyButton = ({ id, max = 10000, active = true }) => {
+const BuyButton = ({ id, max = 10000000, active = true }) => {
     const [count, setCount] = React.useState(0);
     const [buyClass, setBuyClass] = React.useState('buyBTN buy');
     const [minusClass, setMinusClass] = React.useState('minusBTN');
@@ -16,8 +16,10 @@ const BuyButton = ({ id, max = 10000, active = true }) => {
 
     const store = React.useContext(InitDataContext);
 
+    console.log(store);
+
     const buyClickHandler = () => {
-        if (count < max) {
+        if (count < max || max === -1) {
             setCount(() => count + 1);
         }
     }

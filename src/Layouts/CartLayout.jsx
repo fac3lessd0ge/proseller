@@ -5,6 +5,7 @@ import axios from 'axios';
 import CartLink from '../Components/CartLink/CartLink';
 import CartAmountMeter from '../Components/CartAmountMeter/CartAmountMeter';
 import Forms from '../Components/Forms/Forms';
+import { BASE_API_URL } from '../URLS';
 
 const CartLayout = () => {
 	const store = useContext(InitDataContext);
@@ -20,7 +21,7 @@ const CartLayout = () => {
 	React.useEffect(() => {
 		if (store.cartID) {
 			axios
-				.post(`https://proseller.pro/api/basket/`, {
+				.post(BASE_API_URL + `/basket/`, {
 					basket_id: store.cartID,
 					_auth: store.initData
 				})
