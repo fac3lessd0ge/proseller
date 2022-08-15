@@ -49,7 +49,7 @@ const CartLayout = () => {
 				className="catalog__container"
 				style={{
 					paddingTop: 'calc(min(10vh, 95px))',
-					height: 'calc(100vh - calc(min(10vh, 95px)))',
+					height: '120vh',
 					display: 'flex',
 					flexDirection: 'column',
 					alignItems: 'center'

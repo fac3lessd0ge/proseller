@@ -74,8 +74,6 @@ const Forms = ({ initialValues }) => {
                             }
                             store.success = true;
                             setExternalLink(res.data.link)
-                        }).then((res) => {
-                            
                         })
                     }
                     
