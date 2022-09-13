@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import './index.css';
 import InitDataProvider from './InitDataProvider';
 import OutOfStockProvider from './OutOfStockProvider';
@@ -20,16 +20,19 @@ root.render(
 		<OutOfStockProvider>		
 			<BrowserRouter>
 				<Routes>
-					<Route path='/proseller/' element={<Navigate to={'/proseller/cats/0'} />}/>
-					<Route path='/proseller/cats/:id' element={<CatalogLayout type={'test_categories'} headerTitle={'Categories'}/>}/>
-					<Route path='/proseller/item/:id' element={<ItemLayout />}/>
-					<Route path='/proseller/cart' element={<CartLayout />} />
-					<Route path='/proseller/order' element={<OrderLayout />} />
-					<Route path='/proseller/reload' element={<ReloadDummyRoute />} />
-					<Route path='/proseller/faq' element={<InfoPage type={'FAQ'} />} />
-					<Route path='/proseller/contacts' element={<InfoPage type={'Contacts'} />} />
-					<Route path='/proseller/offer' element={<InfoPage type={'Offer'} />} />
-					<Route path= '/proseller/privacy' element={<InfoPage type={'Privacy'} />} />
+          <Route path='our-bot/' element={<><Outlet /></>}>
+            <Route path='' element={<Navigate to={'/cats/0'} />}/>
+            <Route path='cats/:id' element={<CatalogLayout type={'test_categories'} headerTitle={'Categories'}/>}/>
+            <Route path='item/:id' element={<ItemLayout />}/>
+            <Route path='cart' element={<CartLayout />} />
+            <Route path='order' element={<OrderLayout />} />
+            <Route path='reload' element={<ReloadDummyRoute />} />
+            <Route path='faq' element={<InfoPage type={'FAQ'} />} />
+            <Route path='contacts' element={<InfoPage type={'Contacts'} />} />
+            <Route path='offer' element={<InfoPage type={'Offer'} />} />
+            <Route path= 'privacy' element={<InfoPage type={'Privacy'} />} />
+
+          </Route>
 				</Routes>
 			</BrowserRouter>
 		</OutOfStockProvider>

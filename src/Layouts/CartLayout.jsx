@@ -5,7 +5,6 @@ import axios from 'axios';
 import CartLink from '../Components/CartLink/CartLink';
 import CartAmountMeter from '../Components/CartAmountMeter/CartAmountMeter';
 import Forms from '../Components/Forms/Forms';
-import { BASE_API_URL } from '../URLS';
 
 const CartLayout = () => {
 	const store = useContext(InitDataContext);
@@ -21,7 +20,7 @@ const CartLayout = () => {
 	React.useEffect(() => {
 		if (store.cartID) {
 			axios
-				.post(BASE_API_URL + `/basket/`, {
+				.post(`https://our-bot.ru/api/basket/`, {
 					basket_id: store.cartID,
 					_auth: store.initData
 				})
@@ -49,7 +48,7 @@ const CartLayout = () => {
 				className="catalog__container"
 				style={{
 					paddingTop: 'calc(min(10vh, 95px))',
-					height: '120vh',
+					height: 'calc(100vh - calc(min(10vh, 95px)))',
 					display: 'flex',
 					flexDirection: 'column',
 					alignItems: 'center'
@@ -71,7 +70,7 @@ const CartLayout = () => {
 						<>Your cart is empty</>
 						<CartLink
 							text={'Back to store'}
-							to="/proseller/cats/0"
+							to="/our-bot/cats/0"
 						/>
 					</div>
 				)}

@@ -15,7 +15,7 @@ const CartAmountMeter = ({ productID, startAmount, max=99999 }) => {
 
     useUpdateEffect(() => {
         if (store.cartID) {
-            axios.post(BASE_API_URL + `/basket`, {
+            axios.post(BASE_API_URL + `/basket/`, {
             quantity: debouncedCount,
             _auth: store.initData,
             basket_id: store.cartID,
@@ -24,7 +24,7 @@ const CartAmountMeter = ({ productID, startAmount, max=99999 }) => {
         }
 
         else {
-            axios.post(BASE_API_URL + `/basket`, {
+            axios.post(BASE_API_URL + `/basket/`, {
                 quantity: debouncedCount,
                 product_id: productID,
                 _auth: store.initData

@@ -50,7 +50,7 @@ const ItemLayout = () => {
                         <BuyButton active={active} id={Number(id)} max={serverData.quantity === -1 ? 99999 : serverData.quantity}/>
                     </div>
                     <div className="link-container clickable" style={{position: 'fixed', marginLeft: '1px', bottom: '10px', width: '100%', display: 'grid', placeItems: 'center'}}>
-                        <CartLink text={'To cart'} to='/proseller/cart'/>
+                        <CartLink text={'To cart'} to='/our-bot/cart'/>
                     </div>
                 </div>
             }

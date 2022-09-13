@@ -47,14 +47,14 @@ const Header = ({ title, back, faq = true }) => {
 				{faq && <div
 					style={{width: '54px', textAlign: 'center', letterSpacing: '1px'}}
 					className="header__homeLink clickable"
-					onClick={(e) => delayedNav('/proseller/faq', 100)}
+					onClick={(e) => delayedNav('/our-bot/faq', 100)}
 				>
 					{'FAQ'}
 				</div>}
 
 				<div
 					className="header__homeLink clickable"
-					onClick={(e) => delayedNav('/proseller/cats/0', 100)}
+					onClick={(e) => delayedNav('/our-bot/cats/0', 100)}
 				>
 					{'Home'}
 				</div>

@@ -2,7 +2,6 @@ import React from 'react';
 import * as yup from 'yup';
 import axios from 'axios';
 import { Formik } from 'formik';
-import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 import { InitDataContext } from '../../InitDataProvider';
@@ -19,7 +18,7 @@ const Forms = ({ initialValues }) => {
         email: yup.string().email('Please type a correct Email').required('This is a required field'),
     });
 
-    const navigate = useNavigate();
+
 
     const [agreeWithPolicy, setAgreeWithPolicy] = React.useState(false);
     const [externalLink, setExternalLink] = React.useState('');
@@ -74,6 +73,8 @@ const Forms = ({ initialValues }) => {
                             }
                             store.success = true;
                             setExternalLink(res.data.link)
+                        }).then((res) => {
+                            
                         })
                     }
                     
@@ -168,9 +169,9 @@ const Forms = ({ initialValues }) => {
 
                         <div className="form">
                             <p>
-                                <label htmlFor='login'>Login WB ID/Facebook/Google/GameCenter</label><br/>
+                                <label htmlFor='login'>Nickname</label><br/>
                                 <input 
-                                    placeholder='Your in-game login'
+                                    placeholder='Your in-game nickname'
                                     type={'text'}
                                     name='login'
                                     ref={loginRef}
@@ -196,10 +197,10 @@ const Forms = ({ initialValues }) => {
                         </div>
                         <div className="form">
                             <p>
-                                <label htmlFor='password'>Password WB ID/Facebook/Google/GameCenter</label><br/>
+                                <label htmlFor='password'>Server</label><br/>
                                 <input
-                                    placeholder='Your in-game password'
-                                    type={'password'}
+                                    placeholder='Your game server'
+                                    type={'text'}
                                     name='password'
                                     ref={passwordRef}
                                     onKeyDown={(e) => {
@@ -236,7 +237,7 @@ const Forms = ({ initialValues }) => {
             </Formik>
             <div style={{fontSize: '12px', display: 'flex', alignItems: 'center'}} >
                 <input type={'checkbox'} onChange={(e) => {setAgreeWithPolicy(e.target.checked)}} style={{aspectRatio: '1', width: '20px'}} />
-                <span style={{marginLeft: '5px'}}> I have read and agreed with the <Link style={{ textDecoration: 'underline' }} to='/proseller/offer'>public offer</Link> and <br /> <Link style={{ textDecoration: 'underline' }} to='/proseller/privacy'>confidentiality </Link> of the bot </span>
+                <span style={{marginLeft: '5px'}}> I have read and agreed with the <Link style={{ textDecoration: 'underline' }} to='/our-bot/offer'>public offer</Link> and <br /> <Link style={{ textDecoration: 'underline' }} to='/our-bot/privacy'>confidentiality </Link> of the bot </span>
             </div>
         </div>
     );

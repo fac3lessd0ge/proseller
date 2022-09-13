@@ -21,7 +21,7 @@ const CatalogItem = ({
 
 	const navigate = useNavigate();
   
-    const URL = imgUrl.includes('media')
+    const URL = imgUrl?.includes('media')
     ? BASE_URL + '/django' + imgUrl.slice(12)
     : BASE_URL + '/django/media/' + imgUrl;
 
@@ -29,10 +29,10 @@ const CatalogItem = ({
 
 	React.useEffect(() => {
 		if (product) {
-			setLinkTo(`/proseller/item/${id}`);
+			setLinkTo(`/our-bot/item/${id}`);
 		}
 		else {
-            setLinkTo(`/proseller/cats/${id}`);
+            setLinkTo(`/our-bot/cats/${id}`);
         }    
 
         const img = new Image();
@@ -73,7 +73,7 @@ const CatalogItem = ({
 					</div>
 					<div className="catalog__description">
 						{description?.length > 40
-							? description.substring(0, 50) + '...'
+							? description.substring(0, 40) + '...'
 							: description}
 					</div>
 					{product && <div className="catalog__price">{price}</div>}
@@ -81,7 +81,7 @@ const CatalogItem = ({
 			</div>
 			{product && fastbuy && <BuyButton max={max} id={id} />}
 			{product && !fastbuy && (
-				<Link to={`/proseller/item/${id}`}>
+				<Link to={`/our-bot/item/${id}`}>
 					<BuyButton />
 				</Link>
 			)}

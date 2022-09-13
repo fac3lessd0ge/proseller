@@ -40,7 +40,7 @@ const CatalogLayout = ({ headerTitle, type }) => {
             <div className="catalog__container" style={{ paddingTop : 'min(10vh, 95px)', paddingBottom: '50px' }}>
                 {!isLoading && Array.isArray(serverData) && serverData?.map((element, index) => {
                     return (<>
-                        <Link to={`/proseller/cats/${element.id}`}>
+                        <Link to={`/our-bot/cats/${element.id}`}>
                                 <CatalogItem
                                     id={element.id}
                                     name={element.name}
@@ -55,7 +55,7 @@ const CatalogLayout = ({ headerTitle, type }) => {
 
                 {!isLoading && !Array.isArray(serverData) && serverData?.sub_category?.map((element, index) => {
                     return <>
-                        <Link to={`/proseller/cats/${element.id}`}>
+                        <Link to={`/our-bot/cats/${element.id}`}>
                                 <CatalogItem
                                     id={element.id}
                                     name={element.name}
@@ -104,7 +104,7 @@ const CatalogLayout = ({ headerTitle, type }) => {
                 </div>}
 
                 <div className="link-container clickable" style={{position: 'fixed', bottom: '10px', width: '100%', display: 'grid', placeItems: 'center', zIndex: '100'}}>
-                    <CartLink text={'To Cart'} to='/proseller/cart' />
+                    <CartLink text={'To Cart'} to='/our-bot/cart' />
                 </div>
             </div>
         </>

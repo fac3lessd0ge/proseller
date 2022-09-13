@@ -47,7 +47,7 @@ const BuyButton = ({ id, max = 10000000, active = true }) => {
 
     useUpdateEffect(() => {
         if (store.cartID) {
-            axios.post(BASE_API_URL + `/basket`, {
+            axios.post(BASE_API_URL + `/basket/`, {
             product_id: id,
             quantity: debouncedCount,
             _auth: store.initData,
@@ -56,7 +56,7 @@ const BuyButton = ({ id, max = 10000000, active = true }) => {
         }
 
         else {
-            axios.post(BASE_API_URL + `/basket`, {
+            axios.post(BASE_API_URL + `/basket/`, {
                 product_id: id,
                 quantity: debouncedCount,
                 _auth: store.initData
