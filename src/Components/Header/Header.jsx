@@ -20,22 +20,23 @@ const Header = ({ title, back, faq = true }) => {
 					gap: '5px',
 					marginLeft: '5px',
 				}}
-        >
+        	>
 				{back && (
-          <div onClick={backClickHandler} className="back-button">
+          			<div onClick={backClickHandler} className="back-button">
 						<NavBackButton />
 					</div>
 				)}
 				<span
-          style={{
-            textOverflow: 'ellipsis',
-            whiteSpace: 'nowrap',
-            overflow: 'hidden',
-            maxWidth: '120px'
-          }}
-        >
-          {title}
-        </span>
+					onClick={() => { if (back) backClickHandler() }}
+					style={{
+						textOverflow: 'ellipsis',
+						whiteSpace: 'nowrap',
+						overflow: 'hidden',
+						maxWidth: '120px'
+					}}
+        		>
+          			{title}
+        		</span>
 			</div>
 
 			<div 
@@ -44,13 +45,13 @@ const Header = ({ title, back, faq = true }) => {
 					flexDirection: 'row'
 				}}
 			>
-				{faq && <div
-					style={{width: '54px', textAlign: 'center', letterSpacing: '1px'}}
+				{faq && <a
+					style={{minWidth: '54px', textAlign: 'center', letterSpacing: '1px'}}
 					className="header__homeLink clickable"
-					onClick={(e) => delayedNav('/our-bot/faq', 100)}
+					href="https://pro-seller.shop/comments/"
 				>
-					{'FAQ'}
-				</div>}
+					{'Comments'}
+				</a>}
 
 				<div
 					className="header__homeLink clickable"
@@ -59,8 +60,6 @@ const Header = ({ title, back, faq = true }) => {
 					{'Home'}
 				</div>
 			</div>
-
-			
 		</header>
 	);
 };

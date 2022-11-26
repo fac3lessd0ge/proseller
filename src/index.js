@@ -13,7 +13,8 @@ import InfoPage from './Layouts/InfoPage/InfoPage';
 
 /*global Telegram*/
 const initData = Telegram.WebApp.initData;
-
+console.log(initData)
+console.log(Telegram.WebApp.initDataUnsafe)
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 	<InitDataProvider initialValue={initData}>
@@ -21,7 +22,7 @@ root.render(
 			<BrowserRouter>
 				<Routes>
           <Route path='our-bot/' element={<><Outlet /></>}>
-            <Route path='' element={<Navigate to={'/cats/0'} />}/>
+            <Route path='' element={<Navigate to={'cats/0'} />}/>
             <Route path='cats/:id' element={<CatalogLayout type={'test_categories'} headerTitle={'Categories'}/>}/>
             <Route path='item/:id' element={<ItemLayout />}/>
             <Route path='cart' element={<CartLayout />} />
